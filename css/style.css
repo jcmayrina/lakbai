@@ -1,0 +1,130 @@
+:root {
+  --dblue: #051d41;
+  --lblue: #55aaf4;
+  font-family: "Open Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: var(--dblue);
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 20px;
+  background: rgba(245, 245, 245, 0.95);
+}
+
+.navbar .logo a {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.navbar img {
+  height: 150px;
+}
+
+.navbar .logo a {
+  color: var(--dblue);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.navbar .logo .ltext {
+  color: var(--dblue);
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+  font-size: 70px;
+}
+
+.navbar .logo .dtext {
+  color: var(--lblue);
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+  font-size: 70px;
+}
+
+.ltext:hover + .dtext {
+  color: var(--dblue);
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+}
+
+.logo:hover .ltext {
+  color: var(--lblue);
+}
+
+.ltext:hover {
+  color: var(--lblue) !important;
+}
+
+.dtext:hover {
+  color: var(--dblue) !important;
+}
+
+.navlink {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.navlink ul {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.navlink li {
+  list-style: none;
+  margin: 0 50px;
+}
+
+.navlink a {
+  text-decoration: none;
+  color: #051d41;
+  font-weight: 700;
+  font-size: 20px;
+  -webkit-transition: ease-in-out 0.25s;
+  transition: ease-in-out 0.25s;
+}
+
+.navlink a:hover {
+  color: var(--lblue);
+}
+
+header {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../images/banner6.jpg");
+  background-size: cover;
+  background-position: bottom;
+  overflow: hidden;
+}
+/*# sourceMappingURL=style.css.map */
