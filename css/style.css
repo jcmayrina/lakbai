@@ -13,7 +13,8 @@
 }
 
 .navbar {
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   left: 0;
   display: -webkit-box;
@@ -23,7 +24,8 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 20px;
-  background: rgba(245, 245, 245, 0.95);
+  background: #f3f3f3;
+  z-index: 1;
 }
 
 .navbar .logo a {

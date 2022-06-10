@@ -1,0 +1,157 @@
+:root {
+  --dblue: #051d41;
+  --lblue: #55aaf4;
+  font-family: "Open Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: var(--dblue);
+}
+
+body {
+  background-color: var(--dblue);
+}
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.signup-box {
+  height: fit-content;
+  height: fit-content;
+  background-color: white;
+  border-radius: 20px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo a {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.logo a {
+  margin-top: 5vh;
+  color: var(--dblue);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo .ltext {
+  color: var(--dblue);
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+  font-size: 70px;
+}
+.logo .dtext {
+  color: var(--lblue);
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+  font-size: 70px;
+}
+.ltext:hover + .dtext {
+  color: var(--dblue);
+  -webkit-transition: ease-in-out 0.5s;
+  transition: ease-in-out 0.5s;
+}
+
+.logo:hover .ltext {
+  color: var(--lblue);
+}
+
+.ltext:hover {
+  color: var(--lblue) !important;
+}
+
+.dtext:hover {
+  color: var(--dblue) !important;
+}
+h1 {
+  margin-top: 5vh;
+  text-align: center;
+  padding-top: 10px;
+  color: var(--lblue);
+}
+
+form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+form label {
+  display: flex;
+  margin-top: 15px;
+  font-size: 15px;
+  color: white;
+}
+
+form input {
+  margin-top: 20px;
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  background-color: rgb(248, 245, 245);
+  border-radius: 6px;
+  outline: none;
+}
+input[type="button"] {
+  margin-top: 20px;
+  border: none;
+  background-color: lightgray;
+  color: rgb(29, 44, 58);
+  font-size: 18px;
+}
+p {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 15px;
+  color: var(--lblue);
+}
+a {
+  color: var(--lblue);
+}
+.para-2 {
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  margin-top: -10px;
+}
+.para-2 a {
+  color: var(--lblue);
+}
+
+.remember {
+  display: inline-block;
+  margin-top: 20px;
+  text-align: center;
+  width: 80%;
+}
+input[type="checkbox"] {
+  margin: 0px;
+}
+.lever {
+  color: var(--dblue);
+  margin-top: 20px;
+}
