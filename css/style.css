@@ -24,8 +24,8 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 20px;
-  background: #f3f3f3;
-  z-index: 1;
+  background: #051d41;
+  z-index: 999;
 }
 
 .navbar .logo a {
@@ -46,42 +46,42 @@
 }
 
 .navbar .logo a {
-  color: var(--dblue);
+  color: var(--lblue);
   text-decoration: none;
   font-weight: bold;
   font-size: 45px;
 }
 
 .navbar .logo .ltext {
-  color: var(--dblue);
+  color: var(--lblue);
   -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
   font-size: 70px;
 }
 
 .navbar .logo .dtext {
-  color: var(--lblue);
+  color: #fff;
   -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
   font-size: 70px;
 }
 
 .ltext:hover + .dtext {
-  color: var(--dblue);
+  color: var(--lblue);
   -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
 }
 
 .logo:hover .ltext {
-  color: var(--lblue);
+  color: #fff;
 }
 
 .ltext:hover {
-  color: var(--lblue) !important;
+  color: #fff !important;
 }
 
 .dtext:hover {
-  color: var(--dblue) !important;
+  color: var(--lblue) !important;
 }
 
 .navlink {
@@ -110,7 +110,7 @@
 
 .navlink a {
   text-decoration: none;
-  color: #051d41;
+  color: var(--lblue);
   font-weight: 700;
   font-size: 20px;
   -webkit-transition: ease-in-out 0.25s;
@@ -118,7 +118,7 @@
 }
 
 .navlink a:hover {
-  color: var(--lblue);
+  color: #fff;
 }
 
 header {
