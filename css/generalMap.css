@@ -43,8 +43,9 @@
 
 .card-image img {
   max-width: 100%;
-  height: 20vw;
+  height: 30vw;
   object-fit: cover;
+  object-position: center;
 }
 
 .card-info {

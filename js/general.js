@@ -157,5 +157,5 @@ function zoomHere(i) {
 function openNewTab(i) {
   var theArray = coordinates[i];
   sessionStorage.setItem("thisArray", JSON.stringify(theArray));
-  window.open("place.html", "_blank");
+  window.open("place.php", "_blank");
 }

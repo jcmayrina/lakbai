@@ -177,10 +177,10 @@ ol {
   border-radius: 0 0 10px 10px;
   color: #fff;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* number of lines to show */
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1em;
 }
 .about {
   margin-top: 250px;
@@ -191,4 +191,31 @@ ol {
 
 .about p {
   padding: 0 100px 10px 100px;
+}
+.owl-theme .owl-nav {
+  display: none;
+}
+.review-img img {
+  border-radius: 50%;
+  width: 150px !important;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.review-img .r-desc {
+  background-color: transparent;
+  color: #051d41;
+}
+.review-cont .owl-dots {
+  display: none;
+}
+.review-cont {
+  margin: 20px 0 20px 0;
+  background-color: #55aaf4;
+  padding: 30px;
+  text-align: center;
+}
+.owl-carousel .owl-item img {
+  width: auto;
 }
