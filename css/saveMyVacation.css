@@ -70,7 +70,6 @@ select:focus {
 .left-container-select-cont {
   flex-grow: 1;
   display: flex;
-  justify-content: space-around;
   flex-direction: row;
   margin: 20px;
 }
@@ -207,12 +206,13 @@ select::-ms-expand {
   padding: 10px 10px 10px 20px;
   flex-grow: 1;
   width: 100px;
-  height: 450px;
+  height: 100%;
   margin-left: 20px;
   overflow-wrap: break-word;
   border-radius: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.603);
   background-color: #fff;
+  margin-bottom: 20px;
 }
 
 .right-container h1 {
@@ -231,4 +231,23 @@ select::-ms-expand {
 
 .right-container li {
   margin-top: 10px;
+}
+datalist {
+  background-color: #051d41;
+}
+.plan-maincont {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.plan-cont {
+  width: 50%;
+  cursor: pointer;
+}
+.plan-img img {
+  height: 50px;
+  width: 100px;
+}
+.plan-name {
+  margin-left: 10px;
 }
