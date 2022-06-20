@@ -8,55 +8,76 @@
   padding: 0;
   box-sizing: border-box;
   color: var(--dblue);
+  line-height: 1.3;
 }
-.navbar {
-  position: absolute;
+html {
+  overflow: auto;
+}
+html::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f500;
+}
+
+html::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f500;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #051d41;
+}
+dl,
+ul,
+ol {
+  margin-bottom: 0;
+}
+.navbarmain {
+  position: sticky;
   top: 0;
   left: 0;
   display: flex;
   width: 100%;
   justify-content: space-around;
   padding: 20px;
-  background: rgba(245, 245, 245, 0.95);
+  background: #051d41;
+  z-index: 999;
 }
-.navbar .logo a {
+.navbarmain .logo a {
   align-items: center;
   display: flex;
   flex-direction: row;
 }
-.navbar img {
-  height: 150px;
-}
-.navbar .logo a {
-  color: var(--dblue);
+.navbarmain .logo a {
+  color: var(--lblue);
   text-decoration: none;
-  font-weight: bold;
-  font-size: 45px;
+  font-weight: bold !important;
 }
-.navbar .logo .ltext {
-  color: var(--dblue);
-  transition: ease-in-out 0.5s;
-  font-size: 70px;
-}
-.navbar .logo .dtext {
+.navbarmain .logo .ltext {
+  font-family: "Open Sans", sans-serif;
   color: var(--lblue);
   transition: ease-in-out 0.5s;
-  font-size: 70px;
+  font-size: 70px !important;
+}
+.navbarmain .logo .dtext {
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  transition: ease-in-out 0.5s;
+  font-size: 70px !important;
 }
 .ltext:hover + .dtext {
-  color: var(--dblue);
+  color: var(--lblue);
   transition: ease-in-out 0.5s;
 }
 .logo:hover .ltext {
-  color: var(--lblue);
+  color: #fff;
 }
 
 .ltext:hover {
-  color: var(--lblue) !important;
+  color: #fff !important;
 }
 
 .dtext:hover {
-  color: var(--dblue) !important;
+  color: var(--lblue) !important;
 }
 
 .navlink {
@@ -73,19 +94,128 @@
 }
 .navlink a {
   text-decoration: none;
-  color: #051d41;
+  color: var(--lblue);
   font-weight: 700;
   font-size: 20px;
   transition: ease-in-out 0.25s;
 }
 .navlink a:hover {
-  color: var(--lblue);
+  color: #fff;
 }
-header {
-  height: 100vh;
-  width: 100vw;
-  background-image: url("../images/banner6.jpg");
-  background-size: cover;
-  background-position: bottom;
+.guide-cont {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.guide {
+  text-align: center;
+  margin: 50px 10px 50px 10px;
+  width: 40vw;
+}
+.guide form {
+  margin: 10px 0 20px 0;
+}
+.guide form input[type="text"] {
+  padding: 10px;
+  width: 70%;
+  border: none;
+  border: 2px solid #051d41;
+}
+.guide form button[type="submit"] {
+  background-color: #fff;
+  border: none;
+  border: 2px solid #051d41;
+  padding: 10px 20px 10px 20px;
+  color: #051d41;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: ease-in-out 200ms;
+}
+.guide form button[type="submit"]:hover {
+  background-color: #051d41;
+  border: none;
+  border: 2px solid #051d41;
+  color: #fff;
+  transition: ease-in-out 200ms;
+}
+.numtours {
+  text-align: center;
+  border-top: 2px solid #000;
+}
+.guide-cont2 {
+  margin: 20px;
+  border: 2px solid #000;
+}
+
+.r-con {
+  margin: 30px;
+  max-height: 200px;
+}
+.r-con img {
+  border-radius: 10px 10px 0 0;
+  max-width: 100%;
+  height: 200px;
+}
+.r-con .item {
+  margin-top: 20px;
+  border-radius: 20px;
+}
+.r-tit {
+  display: flex;
+  justify-content: center;
+}
+.r-desc {
+  display: flex;
+  justify-content: center;
+  padding: 10px 10px 6px 10px;
+  background-color: #222222;
+  border-radius: 0 0 10px 10px;
+  color: #fff;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
   overflow: hidden;
+  max-height: 3.6em;
+  line-height: 1em;
+}
+.about {
+  margin-top: 250px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.about p {
+  padding: 0 100px 10px 100px;
+}
+.owl-theme .owl-nav {
+  display: none;
+}
+.review-img img {
+  border-radius: 50%;
+  width: 150px !important;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.review-img .r-desc {
+  background-color: transparent;
+  color: #051d41;
+}
+.review-cont .owl-dots {
+  display: none;
+}
+.review-cont {
+  margin: 20px 0 20px 0;
+  background-color: #55aaf4;
+  padding: 30px;
+  text-align: center;
+}
+.owl-carousel .owl-item img {
+  width: auto;
 }

@@ -1,0 +1,234 @@
+/* Save My Vacation CSS*/
+
+.main-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  flex-grow: 1.5;
+  width: 80px;
+  height: 450px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.603);
+  border-radius: 15px;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.left-container section {
+  margin-top: 50px;
+  padding: 0px 20px;
+  width: 100%;
+}
+
+.left-container section input {
+  margin-top: 10px;
+  width: 100%;
+  height: 2vw;
+  font-size: 0.9vw;
+  font-weight: 600;
+  padding-left: 10px;
+  border: 1px solid rgb(99, 99, 99);
+  background-color: white;
+  border-radius: 5px;
+}
+
+.left-container section input:hover {
+  background-color: rgba(238, 238, 238, 1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+}
+
+.left-container input:focus {
+  background-color: rgba(238, 238, 238, 1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+}
+
+.left-container input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+.left-container-form {
+  margin-top: 50px;
+  display: flex;
+}
+
+.left-container-radio {
+  margin-top: 10px;
+  flex-grow: 1;
+}
+.left-container-select-cont {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 550;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: rgb(99, 99, 99);
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #55aaf4;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1.5em;
+  color: #051d41;
+  background-color: #eee;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: bold;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.left-container-select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: 0.25em;
+  overflow: hidden;
+  flex-grow: 1;
+}
+/* Arrow */
+.left-container-select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #55aaf4;
+  transition: 0.25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.left-container-select:hover::after {
+  color: #eee;
+}
+
+.btn-submit {
+  margin: 0 20px 20px 0;
+  text-align: right;
+}
+
+.btn-submit input {
+  padding: 10px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 1px solid rgb(99, 99, 99);
+  font-weight: 550;
+}
+
+.btn-submit input:hover {
+  background-color: #55aaf4;
+  color: #eee;
+}
+
+.right-container {
+  padding: 10px 10px 10px 20px;
+  flex-grow: 1;
+  width: 100px;
+  height: 450px;
+  margin-left: 20px;
+  overflow-wrap: break-word;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.603);
+  background-color: #fff;
+}
+
+.right-container h1 {
+  color: #051d41;
+}
+
+.right-container div {
+  margin-top: 15px;
+}
+
+.right-container ul {
+  list-style-type: none;
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+.right-container li {
+  margin-top: 10px;
+}
