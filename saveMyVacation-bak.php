@@ -1,11 +1,3 @@
-<?php
-require_once('saveMyVacation-livesearch.php');
-
-$db = new db();
-$data = $db->viewData();
-echo "<script>console.log('" . json_encode($data) . "')</script>";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,18 +21,10 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
       <div class="left-container">
         <section>
           <h2>I am travelling to</h2>
-          <form action="saveMyVacation-livesearch.php" method="POST">
-            <input id="searchBox" name="place" list="place" type="text" required>
-          </form>
-          <div class="place-options">
-            <datalist id="place">
-              <?php foreach ($data as $i) { ?>
-                <option value="<?php echo (isset($i['dest_city']) ? htmlspecialchars($i['dest_city']) : ''); ?>"><?php echo $i["dest_city"]; ?></option>
-              <?php } ?>
-          </div>
+          <input type="text" required>
         </section>
         <div class="left-container-select-cont">
-          <!-- <div class="left-container-radio">
+          <div class="left-container-radio">
             <h3>I prefer</h3>
             <br>
             <label class="container">Budget Friendly
@@ -63,7 +47,7 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
               <input type="radio" name="radio" value="tours" required>
               <span class="checkmark"></span>
             </label>
-          </div> -->
+          </div>
           <div>
             <h3>Type of Holiday I am Looking for </h3>
             <br>
@@ -87,63 +71,9 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
   <div class="right-container">
     <div>
       <h1>Vacation Plans:</h1>
-      <ul class="plan-maincont">
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner2.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner3.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
+      <ul>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
       </ul>
     </div>
   </div>

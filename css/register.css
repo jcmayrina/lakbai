@@ -23,7 +23,7 @@ body {
   align-items: center;
 }
 .signup-box {
-  width: 30vw;
+  min-width: 50%;
   height: fit-content;
   background-color: white;
   border-radius: 20px;
@@ -92,9 +92,10 @@ h1 {
 
 form {
   width: 80%;
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
 }
 
 form label {
@@ -121,6 +122,7 @@ button {
   font-size: 18px;
   padding: 5px;
   border-radius: 5px;
+  grid-column: 1 / span 2;
 }
 p {
   text-align: center;
@@ -156,7 +158,8 @@ a {
 }
 .bootstrap-select .dropdown-toggle .filter-option,
 .bootstrap-select > .dropdown-toggle {
-  width: 24vw;
+  width: 100%;
+  float: right;
 }
 .bootstrap-select > .dropdown-toggle.bs-placeholder,
 .bootstrap-select > .dropdown-toggle.bs-placeholder:hover,
