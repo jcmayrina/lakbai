@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +22,10 @@
         </a>
       </div>
       <h1>Log In</h1>
-      <form>
-        <input type="email" placeholder="E-Mail" />
-        <input type="password" placeholder="Password" />
-        <input type="button" value="Submit" />
+      <form action="./include/login-form-handling.php" method="POST">
+        <input type="email" placeholder="E-Mail" name="email" />
+        <input type="password" placeholder="Password" name="pass" />
+        <button type="submit" name="login-submit">Log in</button>
       </form>
     </div>
     <p class="para-2">
