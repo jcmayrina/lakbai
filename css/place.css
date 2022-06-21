@@ -135,3 +135,21 @@ iframe {
   display: flex;
   justify-content: center;
 }
+.owl-stage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.review-carousel .r-desc,
+.review-carousel h4,
+.review-carousel i {
+  color: #051d41;
+}
+.review-carousel .item {
+  padding: 20px;
+}
+.review-cont {
+  background-color: aliceblue;
+}

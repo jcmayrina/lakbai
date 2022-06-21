@@ -1,3 +1,9 @@
+<?php
+require_once('admin-db.php');
+
+$data = new admin();
+$reviewdata = $data->viewReviews();;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,106 +88,22 @@
     <div class="review-tit">
       <h1>Reviews</h1>
     </div>
-    <div class="owl-carousel owl-theme">
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
+    <div class="review-carousel owl-theme">
+      <?php
+      foreach ($reviewdata as $i) {
+      ?>
+        <div class="item">
+          <div class="review-img">
+            <h4><i class='bx bxs-quote-alt-left'></i> <?php echo $i["user_fname"]; ?> <i class='bx bxs-quote-alt-right'></i></h4>
+            <div class="r-desc">
+              <?php echo $i["review_star"]; ?><br />
+              <?php echo $i["review_comment"]; ?>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner1.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner2.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner3.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner4.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner5.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner5.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner5.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="review-img">
-          <img src="images/banner5.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
+      <?php
+      };
+      ?>
     </div>
   </div>
 
@@ -193,7 +115,6 @@
       <div class="item">
         <div class="r-img">
           <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
-          <div class="r-p-tit">chuchu</div>
         </div>
       </div>
       <div class="item">
@@ -234,6 +155,27 @@
 
     $(".owl-carousel").owlCarousel({
       loop: true,
+      margin: 10,
+      nav: true,
+      responsive: {
+        0: {
+          items: 1,
+        },
+        600: {
+          items: 3,
+        },
+        1000: {
+          items: 5,
+        },
+      },
+    });
+
+    $(document).ready(function() {
+      $(".review-carousel").owlCarousel();
+    });
+
+    $(".review-carousel").owlCarousel({
+      loop: false,
       margin: 10,
       nav: true,
       responsive: {

@@ -141,3 +141,12 @@ table.table td .add {
   height: 100px !important;
   width: 100px !important;
 }
+.pass {
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.add-new-tour {
+  float: right;
+}

@@ -1,10 +1,11 @@
 <?php
+session_start();
 require_once('admin-db.php');
 
 $data = new admin();
 $userdata = $data->viewUsers();
 $tourdata = $data->viewTours();
-echo "<script>console.log('" . json_encode($tourdata) . "')</script>";
+$reviewdata = $data->viewReviews();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +34,18 @@ echo "<script>console.log('" . json_encode($tourdata) . "')</script>";
             <li>Logout</li>
     </div>
 
+    <?php
+    if (isset($_SESSION['message'])) :
+    ?>
+        <div class="alert alert-<?php echo $_SESSION['msg_type'] ?>">
+            <?php
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+        </div>
+    <?php
+    endif;
+    ?>
     <!-- tours -->
     <div class="container-lg" id="tour">
         <div class="table-responsive">
@@ -77,9 +90,9 @@ echo "<script>console.log('" . json_encode($tourdata) . "')</script>";
                                 <td><?php echo $i['dest_long']; ?></td>
                                 <td><?php echo $i['dest_tags']; ?></td>
                                 <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                    <a href="admin-db.php?edit=<?php echo $i['dest_id'] ?>" class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="/include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -122,7 +135,7 @@ echo "<script>console.log('" . json_encode($tourdata) . "')</script>";
                                 <td><?php echo $i['user_lname']; ?></td>
                                 <td><?php echo $i['user_contact']; ?></td>
                                 <td><?php echo $i['user_email']; ?></td>
-                                <td><?php echo $i['user_pass']; ?></td>
+                                <td class="pass"><?php echo $i['user_pass']; ?></td>
                                 <td><?php echo $i['user_tags']; ?></td>
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
@@ -159,44 +172,26 @@ echo "<script>console.log('" . json_encode($tourdata) . "')</script>";
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>Puerto Princesa</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam dolor reiciendis quis quos, corporis esse consequuntur est. Beatae nostrum corrupti a atque! Rem illo numquam, cupiditate iusto praesentium animi unde.</td>
-                            <td>⭐⭐⭐</td>
-                            <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Peter Parker</td>
-                            <td>Customer Service</td>
-                            <td>(313) 555-5735</td>
-                            <td>(313) 555-5735</td>
-                            <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Fran Wilson</td>
-                            <td>Human Resources</td>
-                            <td>(503) 555-9931</td>
-                            <td>(313) 555-5735</td>
-                            <td>
-                                <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </td>
-                        </tr>
+
+                        <?php foreach ($reviewdata as $i) { ?>
+                            <tr>
+                                <td><?php echo $i['user_fname']; ?></td>
+                                <td><?php echo $i['dest_name']; ?></td>
+                                <td><?php echo $i['review_comment']; ?></td>
+                                <td><?php echo $i['review_star']; ?></td>
+                                <td>
+                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

@@ -1,3 +1,12 @@
+<?php
+
+  require_once('database-viewer.php');
+
+  $db = new DB();
+  $data = $db->viewData();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,236 +29,17 @@
   <div id="map"></div>
   <div class="container">
     <div class="card-content" display: none">
-      <div id="0" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Quiapo Church.jpg" alt="" /></div>
+    <?php foreach($data as $i) : ?>
+      <div id="<?php echo $i['dest_id']; ?>" class="card" onclick="searchData(this.id)">
+        <div class="card-image"><img src="images/lakbai-places/Quiapo Church.jpg" alt="<?php echo $i['dest_name']; ?>" /></div>
         <div class="card-info">
-          <h3>Card 1</h3>
+          <h3><?php echo $i['dest_name']; ?></h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <?php echo $i['dest_desc']; ?>
           </p>
         </div>
       </div>
-      <div id="1" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/TUP Manila.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 2</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="2" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Luneta Park.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 3</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="3" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Intramuros.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 4</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="4" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Manila City Hall.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 5</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="5" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Tutuban Center Mall.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 6</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="6" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/National Museum of Anthropology.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 7</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="7" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Manila Ocean Park.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 8</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="8" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Manila Zoo.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 9</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="9" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Okada Hotel Manila.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 10</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="10" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Jones Bridge.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 11</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="11" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Binondo Arch.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 12</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div id="12" class="card" onclick="zoomHere(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/SM Manila Mall.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 13</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 14</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 15</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 16</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 17</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 18</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 19</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 20</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 21</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 22</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
-      <div class="card" onclick="location.href='place.php'">
-        <div class="card-image"><img src="images/banner.jpg" alt="" /></div>
-        <div class="card-info">
-          <h3>Card 23</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-        </div>
-      </div>
+      <?php endforeach; ?>
       <div class="pagination">
         <!-- <li class="page-item previous-page disable">
             <a class="page-link" href="#">Prev</a>
