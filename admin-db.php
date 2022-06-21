@@ -1,5 +1,5 @@
 <?php
-class livesearch
+class admin
 {
     private $con;
     private $host = "localhost";
@@ -16,16 +16,24 @@ class livesearch
             $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "<script>console.log('Connection Successful!')</script>";
         } catch (PDOException $e) {
-            echo "<script>console.log('Connection Successful!" . $e->getMessage() . "')</script>";
+            echo "<script>console.log('Connection Error!" . $e->getMessage() . "')</script>";
         }
     }
 
-    public function viewData()
+    public function viewUsers()
     {
-        $query = "SELECT dest_name, dest_city FROM destinations";
+        $query = "SELECT * FROM `users` WHERE `user_lvl` = 2;";
         $stmt = $this->con->prepare($query);
         $stmt->execute();
-        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    public function viewTours()
+    {
+        $query = "SELECT * FROM `destinations`;";
+        $stmt = $this->con->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

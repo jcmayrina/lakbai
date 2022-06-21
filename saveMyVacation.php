@@ -1,8 +1,8 @@
 <?php
 require_once('saveMyVacation-livesearch.php');
 
-$db = new db();
-$data = $db->viewData();
+$livesearch = new livesearch();
+$data = $livesearch->viewData();
 echo "<script>console.log('" . json_encode($data) . "')</script>";
 ?>
 
