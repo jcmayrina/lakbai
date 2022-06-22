@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST['submit'])) {
     require_once 'dbh.php';
 
@@ -11,51 +12,63 @@ if (isset($_POST['submit'])) {
     $level = "user";
     $tags = $_POST['tags'];
 
-    $fErr = $lErr = $phoneErr = $emailErr = $passErr = $cpassErr = "";
+
+
 
     if (empty($fname)) {
-        $fErr = "First Name is required";
+        header("location:../register.php?error=emptyfname&lname=$lname&phone=$phone&email=$email");
+        exit();
     } else {
         if (!preg_match("/^[a-zA-Z-' ]*$/", $fname)) {
-            $fErr = "Only letters and white space allowed";
+            header("location:../register.php?error=invalidfname&lname=$lname&phone=$phone&email=$email");
+            exit();
         }
     }
     if (empty($lname)) {
-        $lErr = "First Name is required";
+        header("location:../register.php?error=emptylname&fname=$fname&phone=$phone&email=$email");
+        exit();
     } else {
         if (!preg_match("/^[a-zA-Z-' ]*$/", $lname)) {
-            $lErr = "Only letters and white space allowed";
+            header("location:../register.php?error=invalidlname&fname=$fname&phone=$phone&email=$email");
+            exit();
         }
     }
 
 
     if (!preg_match("/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/", $phone)) {
-        $phoneErr = "Invalid Phone Number";
+        header("location:../register.php?error=invalidphone&fname=$fname&lname=$lname&email=$email");
+        exit();
     }
 
     if (empty($email)) {
-        $emailErr = "Email is required";
+        header("location:../register.php?error=emptyemail&fname=$fname&lname=$lname&phone=$phone");
+        exit();
     } else {
         // check if e-mail address is well-formed
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
+            header("location:../register.php?error=invalidemail&fname=$fname&lname=$lname&phone=$phone");
+            exit();
         }
     }
 
 
     if (empty($pass)) {
-        $passErr = "Password is Required";
+        header("location:../register.php?error=emptypass&fname=$fname&lname=$lname&phone=$phone&email=$email");
+        exit();
     } else {
         if (!preg_match("/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/", $pass)) {
-            $phoneErr = "Password should contain:\nMinimum eight characters\nat least one letter\none number";
+            header("location:../register.php?error=invalidpass&fname=$fname&lname=$lname&phone=$phone&email=$email");
+            exit();
         }
     }
 
     if (empty($cpass)) {
-        $cpass = "";
+        header("location:../register.php?error=emptycpass&fname=$fname&lname=$lname&phone=$phone&email=$email");
+        exit();
     } else {
         if ($cpass != $pass) {
-            $cpassErr = "Password didn't match!";
+            header("location:../register.php?error=notmatch&fname=$fname&lname=$lname&phone=$phone&email=$email");
+            exit();
         }
     }
 
@@ -71,12 +84,14 @@ if (isset($_POST['submit'])) {
         $result = mysqli_stmt_num_rows($stmt);
 
         if ($result > 0) {
-            header("location:../signup.php?error=usertaken");
+            header("location:../register.php?error=emailtaken&fname=$fname&lname=$lname&phone=$phone");
+            exit();
         } else {
             $sql = "INSERT INTO users (user_fname,user_lname,user_contact,user_email,user_pass,user_lvl,user_tags) Values(?,?,?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("location: ../signup.php?error=stmt_failed");
+                exit();
             } else {
                 foreach ($tags as $value) {
                     $temp .= $value . ", ";

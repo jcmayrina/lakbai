@@ -33,7 +33,7 @@ if (isset($_POST['login-submit'])) {
                 } else if ($pTemp == true) {
                     session_start();
                     $_SESSION['userName'] = $row['user_fname'];
-
+                    
                     header("location:../index.php");
                     exit();
                 } else {
