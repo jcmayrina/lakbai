@@ -150,3 +150,24 @@ table.table td .add {
 .add-new-tour {
   float: right;
 }
+
+.desc {
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.addTourTable {
+  display: none;
+}
+.form-control-pass {
+  display: none;
+}
+.addTourTable label {
+  min-width: 120px;
+  color: #404e67;
+  border-radius: 2px;
+  border: 1px solid #e9e9e9;
+  padding: 5px;
+  display: flex;
+}

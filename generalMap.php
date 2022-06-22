@@ -1,9 +1,9 @@
 <?php
 
-  require_once('database-viewer.php');
+require_once('database-viewer.php');
 
-  $db = new DB();
-  $data = $db->viewData();
+$db = new DB();
+$data = $db->viewData();
 
 ?>
 
@@ -29,16 +29,16 @@
   <div id="map"></div>
   <div class="container">
     <div class="card-content" display: none">
-    <?php foreach($data as $i) : ?>
-      <div id="<?php echo $i['dest_id']; ?>" class="card" onclick="searchData(this.id)">
-        <div class="card-image"><img src="images/lakbai-places/Quiapo Church.jpg" alt="<?php echo $i['dest_name']; ?>" /></div>
-        <div class="card-info">
-          <h3><?php echo $i['dest_name']; ?></h3>
-          <p>
-            <?php echo $i['dest_desc']; ?>
-          </p>
+      <?php foreach ($data as $i) : ?>
+        <div id="<?php echo $i['dest_id']; ?>" class="card" onclick="searchData(this.id)">
+          <div class="card-image"><img src="images/lakbai-places/<?php echo $i['dest_image']; ?>" alt="<?php echo $i['dest_name']; ?>" /></div>
+          <div class="card-info">
+            <h3><?php echo $i['dest_name']; ?></h3>
+            <p>
+              <?php echo $i['dest_desc']; ?>
+            </p>
+          </div>
         </div>
-      </div>
       <?php endforeach; ?>
       <div class="pagination">
         <!-- <li class="page-item previous-page disable">

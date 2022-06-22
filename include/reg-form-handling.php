@@ -9,6 +9,31 @@ if (isset($_GET['deletetour'])) {
     $_SESSION['msg_type'] = "danger";
     header("location: ../admin.php");
 }
+if (isset($_POST['addTour'])) {
+    $destName = $_POST['destName'];
+    $destDesc = $_POST['destDesc'];
+    $destAdd = $_POST['destAdd'];
+    $destCity = $_POST['destCity'];
+    $destPrice = $_POST['destPrice'];
+    $destSeason = $_POST['destSeason'];
+    $destMap = $_POST['destMap'];
+    $destLat = $_POST['destLat'];
+    $destLong = $_POST['destLong'];
+    $destTags = $_POST['destTags'];
+    $folder = "../images/lakbai-places/";
+    $image = $_FILES['destImageUpl']['name'];
+
+
+    $conn->query("INSERT INTO `destinations`(`dest_name`, `dest_desc`, `dest_add`, `dest_stprice`, `dest_season`, `dest_image`, `dest_map`, `dest_long`, `dest_lat`, `dest_tags`, `dest_city`)
+    VALUES ('$destName', '$destDesc', '$destAdd', '$destPrice', '$destSeason', '$image', '$destMap', '$destLong', '$destLat', '$destTags', '$destCity')") or die($conn->error);
+
+
+    if (move_uploaded_file($_FILES['destImageUpl']['tmp_name'], $folder . $image)) {
+        $_SESSION['message'] = "Tour has been added!";
+        $_SESSION['msg_type'] = "success";
+        header("location: ../admin.php");
+    }
+}
 if (isset($_POST['submit'])) {
 
     $fname = $_POST['fname'];

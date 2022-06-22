@@ -56,7 +56,8 @@ $reviewdata = $data->viewReviews();
                             <h2>Tour <b>Details</b></h2>
                         </div>
                         <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                            <a href="#bottom">
+                                <button type="button" class="btn btn-info add-new-tour"><i class="fa fa-plus"></i> Add New</button></a>
                         </div>
                     </div>
                 </div>
@@ -66,6 +67,7 @@ $reviewdata = $data->viewReviews();
                             <th>Name</th>
                             <th>Description</th>
                             <th>Address</th>
+                            <th>City</th>
                             <th>Starting Price</th>
                             <th>Best Season</th>
                             <th>Image</th>
@@ -80,8 +82,9 @@ $reviewdata = $data->viewReviews();
                         <?php foreach ($tourdata as $i) { ?>
                             <tr>
                                 <td><?php echo $i['dest_name']; ?></td>
-                                <td><?php echo $i['dest_desc']; ?></td>
+                                <td class="desc"><?php echo $i['dest_desc']; ?></td>
                                 <td><?php echo $i['dest_add']; ?></td>
+                                <td><?php echo $i['dest_city']; ?></td>
                                 <td><?php echo $i['dest_stprice']; ?></td>
                                 <td><?php echo $i['dest_season']; ?></td>
                                 <td><?php echo $i['dest_image']; ?></td>
@@ -90,12 +93,55 @@ $reviewdata = $data->viewReviews();
                                 <td><?php echo $i['dest_long']; ?></td>
                                 <td><?php echo $i['dest_tags']; ?></td>
                                 <td>
-                                    <a href="admin-db.php?edit=<?php echo $i['dest_id'] ?>" class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                     <a href="/include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>
+                    </tbody>
+                </table>
+
+                <table class="table table-bordered addTourTable" id="addTourTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Starting Price</th>
+                            <th>Best Season</th>
+                            <th>Image</th>
+                            <th>Map iframe</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Tags</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <form method="POST" action="/include/reg-form-handling.php" enctype="multipart/form-data">
+                                <td><input class="form-control" type="text" name="destName" id="destName"></td>
+                                <td><input class="form-control" type="text" name="destDesc" id="destDesc"></td>
+                                <td><input class="form-control" type="text" name="destAdd" id="destAdd"></td>
+                                <td><input class="form-control" type="text" name="destCity" id="destCity"></td>
+                                <td><input class="form-control" type="text" name="destPrice" id="destPrice"></td>
+                                <td><input class="form-control" type="text" name="destSeason" id="destSeason"></td>
+                                <td><input class="form-control-pass" type="file" name="destImageUpl" id="destImageUpl">
+                                    <label for="destImageUpl">Choose Image</label>
+                                </td>
+                                <td><input class="form-control" type="text" name="destMap" id="destMap"></td>
+                                <td><input class="form-control" type="text" name="destLat" id="destLat"></td>
+                                <td><input class="form-control" type="text" name="destLong" id="destLong"></td>
+                                <td><input class="form-control" type="text" name="destTags" id="destTags"></td>
+                                <td>
+                                    <div class="col-sm-4">
+                                        <button type="submit" class="btn btn-info" name="addTour">Add</button>
+                                    </div>
+                                </td>
+                            </form>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -191,7 +237,7 @@ $reviewdata = $data->viewReviews();
             </div>
         </div>
     </div>
-
+    <div class="bottom" id="bottom"></div>
 </body>
 
 </html>
