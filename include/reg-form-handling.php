@@ -31,9 +31,14 @@ if (isset($_POST['editTour'])) {
     $destTags = $_POST['destTags'];
     $folder = "../images/lakbai-places/";
     $image = $_FILES['destImageUpl']['name'];
+    $destExistImg = $_POST['destExistImg'];
+    $checkimg = strlen($image);
 
 
-    $conn->query("UPDATE `destinations` SET `dest_name`='$destName',`dest_desc`='$destDesc',`dest_add`='$destAdd',`dest_stprice`='$destPrice',`dest_season`='$destSeason',`dest_image`='$image',`dest_map`='$destMap',`dest_long`='$destLong',`dest_lat`='$destLat',`dest_tags`='$destTags',`dest_city`='$destCity' WHERE `dest_id` = $destID") or die($conn->error);
+    if ($checkimg > 0)
+        $conn->query("UPDATE `destinations` SET `dest_name`='$destName',`dest_desc`='$destDesc',`dest_add`='$destAdd',`dest_stprice`='$destPrice',`dest_season`='$destSeason',`dest_image`='$image',`dest_map`='$destMap',`dest_long`='$destLong',`dest_lat`='$destLat',`dest_tags`='$destTags',`dest_city`='$destCity' WHERE `dest_id` = $destID") or die($conn->error);
+    else
+        $conn->query("UPDATE `destinations` SET `dest_name`='$destName',`dest_desc`='$destDesc',`dest_add`='$destAdd',`dest_stprice`='$destPrice',`dest_season`='$destSeason',`dest_image`='$destExistImg',`dest_map`='$destMap',`dest_long`='$destLong',`dest_lat`='$destLat',`dest_tags`='$destTags',`dest_city`='$destCity' WHERE `dest_id` = $destID") or die($conn->error);
 
 
     move_uploaded_file($_FILES['destImageUpl']['tmp_name'], $folder . $image);

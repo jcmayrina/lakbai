@@ -141,6 +141,7 @@ if ($_SESSION['userLvl'] != 1) {
                                     <td><input class="form-control" value="<?php echo $i['dest_season']; ?>" type="text" name="destSeason" id="destSeason"></td>
                                     <td>
                                         <img src="<?php echo "images/lakbai-places/" . $i['dest_image']; ?>" height="100px" width="120px">
+                                        <input type="hidden" value="<?php echo $i['dest_image']; ?>" name="destExistImg">
                                         <input class="form-control-pass" type="file" name="destImageUpl" id="destImageUpl">
                                         <label for="destImageUpl">Choose Image</label>
                                     </td>
