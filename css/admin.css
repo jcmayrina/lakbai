@@ -160,6 +160,9 @@ table.table td .add {
 .addTourTable {
   display: none;
 }
+.updateTourTable {
+  display: none;
+}
 .form-control-pass {
   display: none;
 }

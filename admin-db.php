@@ -50,4 +50,17 @@ class admin
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function editTour()
+    {
+
+        if (isset($_GET['edittour'])) {
+            $id = $_GET['edittour'];
+
+            $query = "SELECT * FROM `destinations` WHERE `dest_id` = $id;";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
 }

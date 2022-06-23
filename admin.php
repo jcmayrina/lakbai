@@ -6,6 +6,7 @@ $data = new admin();
 $userdata = $data->viewUsers();
 $tourdata = $data->viewTours();
 $reviewdata = $data->viewReviews();
+$updatedata = $data->editTour();
 
 if ($_SESSION['userLvl'] != 1) {
     header("location: login.php");
@@ -93,14 +94,14 @@ if ($_SESSION['userLvl'] != 1) {
                                 <td><?php echo $i['dest_city']; ?></td>
                                 <td><?php echo $i['dest_stprice']; ?></td>
                                 <td><?php echo $i['dest_season']; ?></td>
-                                <td><?php echo $i['dest_image']; ?></td>
+                                <td><img src="<?php echo "images/lakbai-places/" . $i['dest_image']; ?>" alt="" height="100px" width="120px"></td>
                                 <td class="maps"><?php echo $i['dest_map']; ?></td>
                                 <td><?php echo $i['dest_lat']; ?></td>
                                 <td><?php echo $i['dest_long']; ?></td>
                                 <td><?php echo $i['dest_tags']; ?></td>
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                    <a href="?edittour=<?php echo $i['dest_id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                                     <a href="/include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -108,6 +109,57 @@ if ($_SESSION['userLvl'] != 1) {
                     </tbody>
                 </table>
 
+                <table class="table table-bordered updateTourTable" id="updateTourTable" <?php if (isset($_GET['edittour'])) echo "style='display: block'" ?>>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Starting Price</th>
+                            <th>Best Season</th>
+                            <th>Image</th>
+                            <th>Map iframe</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>Tags</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <form method="POST" action="/include/reg-form-handling.php" enctype="multipart/form-data">
+                                <?php
+                                if (isset($_GET['edittour']))
+                                    foreach ($updatedata as $i) {
+                                ?>
+                                    <td><input type="hidden" value="<?php echo $i['dest_id']; ?>" name="destID"><input class="form-control" value="<?php echo $i['dest_name']; ?>" type="text" name="destName" id="destName"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_desc']; ?>" type="text" name="destDesc" id="destDesc"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_add']; ?>" type="text" name="destAdd" id="destAdd"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_city']; ?>" type="text" name="destCity" id="destCity"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_stprice']; ?>" type="text" name="destPrice" id="destPrice"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_season']; ?>" type="text" name="destSeason" id="destSeason"></td>
+                                    <td>
+                                        <img src="<?php echo "images/lakbai-places/" . $i['dest_image']; ?>" height="100px" width="120px">
+                                        <input class="form-control-pass" type="file" name="destImageUpl" id="destImageUpl">
+                                        <label for="destImageUpl">Choose Image</label>
+                                    </td>
+                                    <td><input class="form-control" value='<?php echo $i['dest_map']; ?>' type="text" name="destMap" id="destMap"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_lat']; ?>" type="text" name="destLat" id="destLat"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_long']; ?>" type="text" name="destLong" id="destLong"></td>
+                                    <td><input class="form-control" value="<?php echo $i['dest_tags']; ?>" type="text" name="destTags" id="destTags"></td>
+                                    <td>
+                                        <div class="col-sm-4">
+                                            <button type="submit" class="btn btn-info" name="editTour">Edit</button>
+                                        </div>
+                                    </td>
+                                <?php
+                                    }
+                                ?>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
                 <table class="table table-bordered addTourTable" id="addTourTable">
                     <thead>
                         <tr>
@@ -134,10 +186,12 @@ if ($_SESSION['userLvl'] != 1) {
                                 <td><input class="form-control" type="text" name="destCity" id="destCity"></td>
                                 <td><input class="form-control" type="text" name="destPrice" id="destPrice"></td>
                                 <td><input class="form-control" type="text" name="destSeason" id="destSeason"></td>
-                                <td><input class="form-control-pass" type="file" name="destImageUpl" id="destImageUpl">
+                                <td>
+
+                                    <input class="form-control-pass" type="file" name="destImageUpl" id="destImageUpl">
                                     <label for="destImageUpl">Choose Image</label>
                                 </td>
-                                <td><input class="form-control" type="text" name="destMap" id="destMap"></td>
+                                <td><input class="form-control" type="url" name="destMap" id="destMap"></td>
                                 <td><input class="form-control" type="text" name="destLat" id="destLat"></td>
                                 <td><input class="form-control" type="text" name="destLong" id="destLong"></td>
                                 <td><input class="form-control" type="text" name="destTags" id="destTags"></td>
