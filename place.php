@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('admin-db.php');
 
 $data = new admin();
@@ -24,7 +25,16 @@ $reviewdata = $data->viewReviews();;
 
 <body>
   <?php
-  include("navbar.php");
+  if (!isset($_SESSION['userLvl'])) {
+
+    include("navbar.php");
+  } else {
+    if ($_SESSION['userLvl'] == 2) {
+      include("navbar-user.php");
+    } else {
+      include("navbar.php");
+    }
+  }
   ?>
   <div class="info-bar">
     <div class="name">

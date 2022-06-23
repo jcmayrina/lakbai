@@ -13,7 +13,7 @@
         <li><a href="index.php">HOME</a></li>
         <li><a href="generalMap.php">DESTINATIONS</a></li>
         <li><a href="saveMyVacation.php">SAVE MY VACATION</a></li>
-        <li><a href="login.php">LOGIN</a></li>
-        <li><a href="register.php">REGISTER</a></li>
+        <li class="userlink"><a href="user-profile.php"><?php echo ucfirst($_SESSION['userName']); ?></a></li>
+        <li class="userlink"><a href="logout.php">Logout</a></li>
     </ul>
 </div>

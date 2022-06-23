@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once('database-viewer.php');
 
 $db = new DB();
@@ -24,7 +25,16 @@ $data = $db->viewData();
 
 <body>
   <?php
-  include("navbar.php");
+  if (!isset($_SESSION['userLvl'])) {
+
+    include("navbar.php");
+  } else {
+    if ($_SESSION['userLvl'] == 2) {
+      include("navbar-user.php");
+    } else {
+      include("navbar.php");
+    }
+  }
   ?>
   <div id="map"></div>
   <div class="container">

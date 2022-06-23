@@ -6,6 +6,10 @@ $data = new admin();
 $userdata = $data->viewUsers();
 $tourdata = $data->viewTours();
 $reviewdata = $data->viewReviews();
+
+if ($_SESSION['userLvl'] != 1) {
+    header("location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +34,10 @@ $reviewdata = $data->viewReviews();
         <ul class="navlink">
             <li class="showtour">Tours</li>
             <li class="showuser">Users</li>
-            <li class="showfeed">Feedbacks</li>
-            <li>Logout</li>
+            <!-- <li class="showfeed">Feedbacks</li> -->
+            <a href="logout.php">
+                <li>Logout</li>
+            </a>
     </div>
 
     <?php
@@ -157,9 +163,6 @@ $reviewdata = $data->viewReviews();
                         <div class="col-sm-8">
                             <h2>User <b>Details</b></h2>
                         </div>
-                        <div class="col-sm-4">
-                            <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
-                        </div>
                     </div>
                 </div>
                 <table class="table table-bordered">
@@ -184,9 +187,7 @@ $reviewdata = $data->viewReviews();
                                 <td class="pass"><?php echo $i['user_pass']; ?></td>
                                 <td><?php echo $i['user_tags']; ?></td>
                                 <td>
-                                    <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
-                                    <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="/include/reg-form-handling.php?deleteuser=<?php echo $i['user_id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -197,7 +198,7 @@ $reviewdata = $data->viewReviews();
     </div>
 
     <!-- feedback -->
-    <div class="container-lg" id="feedback">
+    <!-- <div class="container-lg" id="feedback">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
@@ -236,7 +237,7 @@ $reviewdata = $data->viewReviews();
                 </table>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="bottom" id="bottom"></div>
 </body>
 
