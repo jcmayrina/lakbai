@@ -42,8 +42,8 @@ if (isset($_POST['editTour'])) {
 
 
     move_uploaded_file($_FILES['destImageUpl']['tmp_name'], $folder . $image);
-    $_SESSION['message'] = "Tour has been added!";
-    $_SESSION['msg_type'] = "success";
+    $_SESSION['message'] = "Tour has been updated!";
+    $_SESSION['msg_type'] = "info";
     header("location: ../admin.php");
 }
 if (isset($_POST['addTour'])) {
