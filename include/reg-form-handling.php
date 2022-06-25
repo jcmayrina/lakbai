@@ -1,5 +1,76 @@
 <?php
 session_start();
+require_once 'dbh.php';
+if (isset($_GET['deletetour'])) {
+    $id = $_GET['deletetour'];
+    $conn->query("DELETE FROM `destinations` WHERE dest_id = $id;") or die($mysqli->error());
+
+    $_SESSION['message'] = "Tour has been deleted!";
+    $_SESSION['msg_type'] = "danger";
+    header("location: ../admin.php");
+}
+if (isset($_GET['deleteuser'])) {
+    $id = $_GET['deleteuser'];
+    $conn->query("DELETE FROM `users` WHERE user_id = $id;") or die($mysqli->error());
+
+    $_SESSION['message'] = "User has been deleted!";
+    $_SESSION['msg_type'] = "danger";
+    header("location: ../admin.php");
+}
+if (isset($_POST['editTour'])) {
+    $destID = $_POST['destID'];
+    $destName = $_POST['destName'];
+    $destDesc = $_POST['destDesc'];
+    $destAdd = $_POST['destAdd'];
+    $destCity = $_POST['destCity'];
+    $destPrice = $_POST['destPrice'];
+    $destSeason = $_POST['destSeason'];
+    $destMap = $_POST['destMap'];
+    $destLat = $_POST['destLat'];
+    $destLong = $_POST['destLong'];
+    $destTags = $_POST['destTags'];
+    $folder = "../images/lakbai-places/";
+    $image = $_FILES['destImageUpl']['name'];
+    $destExistImg = $_POST['destExistImg'];
+    $checkimg = strlen($image);
+
+
+    if ($checkimg > 0)
+        $conn->query("UPDATE `destinations` SET `dest_name`='$destName',`dest_desc`='$destDesc',`dest_add`='$destAdd',`dest_stprice`='$destPrice',`dest_season`='$destSeason',`dest_image`='$image',`dest_map`='$destMap',`dest_long`='$destLong',`dest_lat`='$destLat',`dest_tags`='$destTags',`dest_city`='$destCity' WHERE `dest_id` = $destID") or die($conn->error);
+    else
+        $conn->query("UPDATE `destinations` SET `dest_name`='$destName',`dest_desc`='$destDesc',`dest_add`='$destAdd',`dest_stprice`='$destPrice',`dest_season`='$destSeason',`dest_image`='$destExistImg',`dest_map`='$destMap',`dest_long`='$destLong',`dest_lat`='$destLat',`dest_tags`='$destTags',`dest_city`='$destCity' WHERE `dest_id` = $destID") or die($conn->error);
+
+
+    move_uploaded_file($_FILES['destImageUpl']['tmp_name'], $folder . $image);
+    $_SESSION['message'] = "Tour has been updated!";
+    $_SESSION['msg_type'] = "info";
+    header("location: ../admin.php");
+}
+if (isset($_POST['addTour'])) {
+    $destName = $_POST['destName'];
+    $destDesc = $_POST['destDesc'];
+    $destAdd = $_POST['destAdd'];
+    $destCity = $_POST['destCity'];
+    $destPrice = $_POST['destPrice'];
+    $destSeason = $_POST['destSeason'];
+    $destMap = $_POST['destMap'];
+    $destLat = $_POST['destLat'];
+    $destLong = $_POST['destLong'];
+    $destTags = $_POST['destTags'];
+    $folder = "../images/lakbai-places/";
+    $image = $_FILES['destImageUpl']['name'];
+
+
+    $conn->query("INSERT INTO `destinations`(`dest_name`, `dest_desc`, `dest_add`, `dest_stprice`, `dest_season`, `dest_image`, `dest_map`, `dest_long`, `dest_lat`, `dest_tags`, `dest_city`)
+    VALUES ('$destName', '$destDesc', '$destAdd', '$destPrice', '$destSeason', '$image', '$destMap', '$destLong', '$destLat', '$destTags', '$destCity')") or die($conn->error);
+
+
+    if (move_uploaded_file($_FILES['destImageUpl']['tmp_name'], $folder . $image)) {
+        $_SESSION['message'] = "Tour has been added!";
+        $_SESSION['msg_type'] = "success";
+        header("location: ../admin.php");
+    }
+}
 if (isset($_POST['submit'])) {
     require_once 'dbh.php';
 
@@ -9,7 +80,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $pass =  $_POST['pass'];
     $cpass = $_POST['cpass'];
-    $level = "user";
+    $level = 2;
     $tags = $_POST['tags'];
 
 
@@ -97,7 +168,7 @@ if (isset($_POST['submit'])) {
                     $temp .= $value . ", ";
                 }
                 $hashedpass = password_hash($pass, PASSWORD_DEFAULT);
-                mysqli_stmt_bind_param($stmt, "sssssss", $fname, $lname, $phone, $email, $hashedpass, $level, $temp);
+                mysqli_stmt_bind_param($stmt, "sssssss", $fname, $lname, $phone, $email, $pass, $level, $temp);
                 mysqli_stmt_execute($stmt);
                 header("location: ../login.php");
             }

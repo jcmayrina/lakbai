@@ -53,7 +53,6 @@
   color: #222;
   padding: 20px 20px 20px;
   background-color: rgba(255, 255, 255, 0.733);
-  height: 150px;
 }
 
 .card-info h3 {
@@ -120,20 +119,4 @@
 
 .disable {
   background: rgb(192, 192, 192);
-}
-
-h3 {
-  display: -webkit-box;
-  max-width: 300px;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-p {
-  display: -webkit-box;
-  max-width: 300px;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }

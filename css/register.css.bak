@@ -21,15 +21,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 1.5em;
 }
-
 .signup-box {
-  height: fit-content;
+  min-width: 50%;
   height: fit-content;
   background-color: white;
   border-radius: 20px;
-  padding: 0 5vh 15vh 5vh;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo a {
@@ -85,17 +86,22 @@ body {
   color: var(--dblue) !important;
 }
 h1 {
-  margin-top: 5vh;
   text-align: center;
-  padding-top: 10px;
   color: var(--lblue);
 }
 
 form {
-  width: 20vw;
-  display: flex;
-  flex-direction: column;
+  width: 80%;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+}
+
+form label {
+  display: inline-flex;
+  margin-top: 15px;
+  font-size: 15px;
 }
 
 form input {
@@ -138,13 +144,27 @@ a {
 }
 
 .remember {
+  display: inline-block;
   margin-top: 20px;
   text-align: center;
-}
-input[type="checkbox"] {
-  margin: 0px;
+  width: 80%;
 }
 .lever {
   color: var(--dblue);
   margin-top: 20px;
+}
+.bootstrap-select > .dropdown-toggle {
+  margin: 20px 0 0 0;
+}
+.bootstrap-select .dropdown-toggle .filter-option,
+.bootstrap-select > .dropdown-toggle {
+  width: 100%;
+  float: right;
+}
+.bootstrap-select > .dropdown-toggle.bs-placeholder,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:hover,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+  color: #051d41;
+  border: 1px solid gray;
 }

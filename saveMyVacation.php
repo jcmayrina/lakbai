@@ -1,8 +1,9 @@
 <?php
+session_start();
 require_once('saveMyVacation-livesearch.php');
 
-$db = new db();
-$data = $db->viewData();
+$livesearch = new livesearch();
+$data = $livesearch->viewData();
 echo "<script>console.log('" . json_encode($data) . "')</script>";
 ?>
 
@@ -21,7 +22,16 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
 
 <body>
   <?php
-  include("navbar.php");
+  if (!isset($_SESSION['userLvl'])) {
+
+    include("navbar.php");
+  } else {
+    if ($_SESSION['userLvl'] == 2) {
+      include("navbar-user.php");
+    } else {
+      include("navbar.php");
+    }
+  }
   ?>
 
   <form class="left-container-form">

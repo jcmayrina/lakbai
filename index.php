@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +21,16 @@
 
 <body>
   <?php
-  include("navbar.php");
+  if (!isset($_SESSION['userLvl'])) {
+
+    include("navbar.php");
+  } else {
+    if ($_SESSION['userLvl'] == 2) {
+      include("navbar-user.php");
+    } else {
+      include("navbar.php");
+    }
+  }
   ?>
   <div class="guide-cont">
     <div class="guide-cont2">

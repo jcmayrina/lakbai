@@ -1,5 +1,5 @@
 <?php
-class db
+class livesearch
 {
     private $con;
     private $host = "localhost";
@@ -16,7 +16,7 @@ class db
             $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "<script>console.log('Connection Successful!')</script>";
         } catch (PDOException $e) {
-            echo "<script>console.log('Connection Error!" . $e->getMessage() . "')</script>";
+            echo "<script>console.log('Connection Successful!" . $e->getMessage() . "')</script>";
         }
     }
 

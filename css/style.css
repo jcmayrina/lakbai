@@ -218,7 +218,7 @@ ol {
 
 .r-con img {
   border-radius: 10px 10px 0 0;
-  max-width: 100%;
+  min-width: 100%;
   height: 200px;
 }
 
@@ -236,7 +236,7 @@ ol {
           justify-content: center;
 }
 
-.r-desc {
+.owl-carousel .r-desc {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -301,5 +301,13 @@ ol {
 
 .owl-carousel .owl-item img {
   width: auto;
+}
+
+.userlink a {
+  color: #fff;
+}
+
+.userlink a:hover {
+  color: #55aaf4;
 }
 /*# sourceMappingURL=style.css.map */

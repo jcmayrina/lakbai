@@ -25,16 +25,21 @@ if (isset($_POST['login-submit'])) {
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)) {
-                $pTemp = password_verify($password, $row['user_pass']);
-                if ($pTemp == false) {
+                $pTemp = strcmp($password, $row['user_pass']);
+                if ($pTemp != 0) {
                     $pError = "Wrong password";
                     header("location.../login.php?passwordemail");
                     exit();
-                } else if ($pTemp == true) {
+                } else if ($pTemp == 0) {
                     session_start();
                     $_SESSION['userName'] = $row['user_fname'];
-                    
-                    header("location:../index.php");
+                    $_SESSION['userID'] = $row['user_id'];
+                    $_SESSION['userLvl'] = $row['user_lvl'];
+
+                    if ($_SESSION['userLvl'] == 2)
+                        header("location: ../index.php");
+                    if ($_SESSION['userLvl'] == 1)
+                        header("location: ../admin.php");
                     exit();
                 } else {
                     $pError = "Wrong password";
