@@ -80,12 +80,11 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
             <div class="left-container-select">
               <select required>
                 <option value="" disabled selected>Select your option</option>
-                <option value="culture">Culture & History</option>
+                <option value="culture" name="culture">Culture & History</option>
                 <option value="nature">Nature & Adventure</option>
                 <option value="art">Art & Museums</option>
-                <option value="private">Private Experiences</option>
-                <option value="locals">Meet the Locals</option>
-                <option value="Nightlife">Culinary & Nightlife</option>
+                <option value="culinary">Culinary & Nightlife</option>
+                <option value="summer">Summer experience</option>
               </select>
             </div>
           </div>
