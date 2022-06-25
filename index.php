@@ -98,10 +98,13 @@ foreach ($tourdata as $i) {
       }, function(data) {
         $('div#results').html(data);
       });
-
     });
   });
-
+  window.addEventListener('click', function(e) {
+    if (!document.getElementById('guidesearch').contains(e.target)) {
+      $('#results').css('display', 'none');
+    }
+  });
   $(".owl-carousel").owlCarousel({
     loop: false,
     margin: 5,
