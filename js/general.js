@@ -34,7 +34,7 @@ function zoomHere(data) {
       data[0]["dest_name"] +
       '</h3><br><p style="display: text-alignment: justify; -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; max-width: 200px; overflow: hidden; text-overflow: ellipsis;">' +
       data[0]["dest_desc"] +
-      '</p><a href="place.php" target="_blank">View more details...</a>'
+      '</p><a href="place.php" target="_self">View more details...</a>'
   );
   L.marker([data[0]["dest_lat"], data[0]["dest_long"]], { icon: thisIcon })
     .addTo(map)

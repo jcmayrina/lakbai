@@ -49,14 +49,15 @@ foreach ($tourdata as $i) {
     </video>
     <div class=" guide-cont2">
       <div class="guide">
-        <h1>Looking for a guide?</h1>
+        <h1 id="looking"></h1>
         <form action="" method="get">
           <input type="text" name="guidesearch" id="guidesearch" placeholder="Where's your next Adventure?" />
         </form>
         <div id="results"></div>
       </div>
       <div class="numtours">
-        <h3>Total number of destinations: <?php echo $allTour; ?></h3>
+        <h3>Total number of destinations: <p class="num" data-val="<?php echo $allTour; ?>"><?php echo $allTour; ?></p>
+        </h3>
       </div>
     </div>
   </div>
@@ -98,6 +99,29 @@ foreach ($tourdata as $i) {
       }, function(data) {
         $('div#results').html(data);
       });
+    });
+    let valueDisplays = document.querySelectorAll(".num");
+    let interval = 1000;
+
+    valueDisplays.forEach((valueDisplay) => {
+      let startValue = 0;
+      let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+      let duration = Math.floor(interval / endValue);
+      let counter = setInterval(function() {
+        startValue += 1;
+        valueDisplay.textContent = startValue;
+        if (startValue == endValue) {
+          clearInterval(counter);
+        }
+      }, duration);
+    });
+    var typed = new Typed('#looking', {
+      strings: ['Looking for a guide?', 'Explore Now!', 'It\'s more fun in the Philippines!'],
+      typeSpeed: 50,
+      backSpeed: 50,
+      backDelay: 5000,
+      repeatDelay: 2000,
+      loop: true,
     });
   });
   window.addEventListener('click', function(e) {

@@ -1,7 +1,7 @@
 :root {
   --dblue: #051d41;
   --lblue: #55aaf4;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 * {
   margin: 0;
@@ -9,6 +9,7 @@
   box-sizing: border-box;
   color: var(--dblue);
   line-height: 1.3;
+  font-family: "Raleway", sans-serif;
 }
 html {
   overflow: auto;
@@ -53,13 +54,11 @@ ol {
   font-weight: bold !important;
 }
 .navbarmain .logo .ltext {
-  font-family: "Open Sans", sans-serif;
   color: var(--lblue);
   transition: ease-in-out 0.5s;
   font-size: 70px !important;
 }
 .navbarmain .logo .dtext {
-  font-family: "Open Sans", sans-serif;
   color: #fff;
   transition: ease-in-out 0.5s;
   font-size: 70px !important;
@@ -156,10 +155,17 @@ ol {
   text-align: center;
   border-top: 2px solid #fff;
 }
+.numtours p {
+  text-shadow: 4px 3px 12px rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
+  color: #fff;
+  display: inline;
+}
 .numtours h3 {
   text-shadow: 4px 3px 12px rgba(0, 0, 0, 0.6);
   margin-top: 10px;
   color: #fff;
+  display: inline;
 }
 .guide-cont2 {
   margin: 20px;
@@ -196,7 +202,7 @@ ol {
   max-width: 305px;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  height: 150px;
+  overflow: hidden !important;
 }
 .about {
   margin-top: 250px;
@@ -293,4 +299,13 @@ ol {
 
 .user:hover > span {
   color: #fff;
+}
+#looking {
+  display: inline;
+}
+.typed-cursor {
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
+  display: inline;
 }

@@ -1,7 +1,7 @@
 :root {
   --dblue: #051d41;
   --lblue: #55aaf4;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 * {
@@ -10,6 +10,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: var(--dblue);
+  font-family: "Raleway", sans-serif;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top:20px ;
+  padding-top: 20px;
 }
 .signup-box {
   min-width: 50%;
@@ -155,7 +156,7 @@ a {
   margin-top: 20px;
 }
 .bootstrap-select > .dropdown-toggle {
-  margin: 20px 0 0 0
+  margin: 20px 0 0 0;
 }
 .bootstrap-select .dropdown-toggle .filter-option,
 .bootstrap-select > .dropdown-toggle {
@@ -169,7 +170,6 @@ a {
   color: #051d41;
   border: 1px solid gray;
 }
-
 
 /* alerts */
 
@@ -198,16 +198,16 @@ a {
 
 @keyframes show_slide {
   0% {
-      transform: translateX(100%);
+    transform: translateX(100%);
   }
   40% {
-      transform: translateX(-10%);
+    transform: translateX(-10%);
   }
   80% {
-      transform: translateX(0%);
+    transform: translateX(0%);
   }
   100% {
-      transform: translateX(-10px);
+    transform: translateX(-10px);
   }
 }
 
@@ -217,16 +217,16 @@ a {
 
 @keyframes hide_slide {
   0% {
-      transform: translateX(-10px);
+    transform: translateX(-10px);
   }
   40% {
-      transform: translateX(0%);
+    transform: translateX(0%);
   }
   80% {
-      transform: translateX(-10%);
+    transform: translateX(-10%);
   }
   100% {
-      transform: translateX(100%);
+    transform: translateX(100%);
   }
 }
 
@@ -264,5 +264,3 @@ a {
   font-size: 22px;
   line-height: 40px;
 }
-
-
