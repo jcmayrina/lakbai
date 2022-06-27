@@ -38,17 +38,21 @@ class admin
     }
     public function viewReviews()
     {
-        $query = "SELECT
-        users.user_fname, destinations.dest_name, reviews.review_comment, reviews.review_star
+        if (isset($_SESSION['userID'])) {
+            $id = $_SESSION['userID'];
+            $query = "SELECT
+        destinations.dest_name, destinations.dest_city, destinations.dest_desc, destinations.dest_image, reviews.review_comment, reviews.review_star
         FROM reviews
         JOIN users 
         ON reviews.review_userID = users.user_id
         JOIN destinations 
-        ON reviews.review_destID = destinations.dest_id;";
-        $stmt = $this->con->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        ON reviews.review_destID = destinations.dest_id
+        WHERE users.user_id = $id;";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
     public function editTour()
     {
@@ -57,6 +61,19 @@ class admin
             $id = $_GET['edittour'];
 
             $query = "SELECT * FROM `destinations` WHERE `dest_id` = $id;";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+    public function showcurrUser()
+    {
+
+        if (isset($_SESSION['userID'])) {
+            $id = $_SESSION['userID'];
+
+            $query = "SELECT * FROM `users` WHERE `user_id` = $id;";
             $stmt = $this->con->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
