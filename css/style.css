@@ -238,6 +238,7 @@ ol {
 }
 
 .r-con .item {
+  cursor: pointer;
   margin-top: 20px;
   border-radius: 20px;
 }
@@ -364,7 +365,7 @@ ol {
   width: 70px;
 }
 
-#user {
+.user {
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -376,15 +377,15 @@ ol {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-#user:hover {
+.user:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-#user span {
+.user span {
   margin-left: 10px;
 }
 
-#user:hover > span {
+.user:hover > span {
   color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

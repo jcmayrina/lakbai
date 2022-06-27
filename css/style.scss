@@ -175,6 +175,7 @@ ol {
   height: 200px;
 }
 .r-con .item {
+  cursor: pointer;
   margin-top: 20px;
   border-radius: 20px;
 }
@@ -276,20 +277,20 @@ ol {
   height: 40px;
   width: 70px;
 }
-#user {
+.user {
   cursor: pointer;
   display: flex;
   align-items: center;
   padding: 10px 10px 10px 10px;
   background-color: rgba(255, 255, 255, 0.8);
 }
-#user:hover {
+.user:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-#user span {
+.user span {
   margin-left: 10px;
 }
 
-#user:hover > span {
+.user:hover > span {
   color: #fff;
 }

@@ -4,7 +4,6 @@ require_once('admin-db.php');
 
 $data = new admin();
 $reviewdata = $data->viewReviews();;
-$tourdata = $data->viewTours();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,22 +38,24 @@ $tourdata = $data->viewTours();
   ?>
   <div class="info-bar">
     <div class="name">
-      <h1 id="location"></h1>
+      <h1>Puerto Princesa Underground River</h1>
     </div>
     <div class="info">
       <div class="info-item">
         <i class="fa-solid fa-location-dot"></i>
-        <p id="address"></p>
+        <p>Puerto Princesa, Palawan</p>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-road"></i>
+        <p>Distance from your location:346.12km</p>
       </div>
       <div class="info-item">
         <i class="fa-solid fa-cloud-sun"></i>
-        <p id="season"></p>
-        <p>&nbsp;Season</p>
+        <p>Best Season: Fall</p>
       </div>
       <div class="info-item">
         <i class="fa-solid fa-peso-sign"></i>
-        <p id="price"></p>
-        <p>&nbsp;pesos per person</p>
+        <p>Starting Price: 1,500 pesos per person</p>
       </div>
     </div>
   </div>
@@ -63,16 +64,33 @@ $tourdata = $data->viewTours();
       <!-- Slideshow container -->
       <div class="slideshow-container">
         <div class="mySlides">
-          <img src="" id="image" style="width: 100%" />
+          <img src="images/puerto_prinsesa.jpg" style="width: 100%" />
         </div>
       </div>
     </div>
     <div class="map">
-      <iframe id="ifr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2502.797056898842!2d118.92345008002643!3d10.20028105526433!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb02fda05e478bbd1!2sThe%20Guardian%20Tree%20of%20the%20Puerto%20Princesa%20Underground%20River%20UNESCO%20World%20Heritage%20Site!5e1!3m2!1sen!2sph!4v1654784633408!5m2!1sen!2sph" width="600" height="450" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
   <div class="place-info">
-    <p id="fact" class="fact">
+    <p class="fact">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+      delectus unde dolores alias consequuntur nobis nihil cum repellat
+      debitis ducimus accusantium qui praesentium aut architecto aliquam,
+      tempora ipsam, ut iure? Ipsa nobis necessitatibus odio earum maiores
+      mollitia quo, odit esse ut aspernatur atque quia quasi temporibus
+      recusandae illo corporis perspiciatis error doloremque voluptas soluta
+      nisi laboriosam. Iste dicta itaque vero. Animi, perferendis et illum
+      voluptates totam nihil debitis, repellendus impedit unde labore officia
+      exercitationem blanditiis eos. Veritatis consequatur dolores tenetur
+      sint officia quae voluptatibus error laboriosam eius obcaecati, ducimus
+      perspiciatis. Tempore omnis vitae qui voluptates, repudiandae soluta
+      facilis deleniti id aliquam alias debitis similique corporis excepturi
+      harum beatae nesciunt. Aperiam placeat officiis beatae provident modi
+      nisi soluta veniam blanditiis maxime? Dolores odio quae at autem est
+      beatae! Debitis, eos eum laborum eaque accusantium quo. Deleniti
+      voluptas tenetur, nam repellat ex placeat consectetur excepturi, ea
+      dicta suscipit provident quo! Quidem, odit?
     </p>
   </div>
 
@@ -143,7 +161,6 @@ $tourdata = $data->viewTours();
   <script>
     $(document).ready(function() {
       $(".owl-carousel").owlCarousel();
-
     });
 
     $(".owl-carousel").owlCarousel({

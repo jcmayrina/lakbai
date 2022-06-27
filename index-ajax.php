@@ -7,7 +7,7 @@ $array = $conn->query($stmt);
 
 foreach ($array as $i) {
 ?>
-    <div id="user" onclick=""><img src="<?php echo "images/lakbai-places/" . $i['dest_image'] ?>" id='pic' alt=""><span><?php echo $i['dest_name']; ?></span></div>
+    <div class="user" id="<?php echo $i['dest_id']; ?>" onclick="livesearch(this.id)"><img src="<?php echo "images/lakbai-places/" . $i['dest_image'] ?>" id='pic' alt=""><span><?php echo $i['dest_name']; ?></span></div>
 
 <?php
 }

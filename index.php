@@ -69,7 +69,7 @@ foreach ($tourdata as $i) {
       <?php
       foreach ($tourdata as $i) :
       ?>
-        <div class="item">
+        <div class="item" id="<?php echo $i['dest_id']; ?>" onclick="livesearch(this.id)">
           <div class="r-img">
             <img src="<?php echo 'images/lakbai-places/' . $i['dest_image']; ?>" alt="puerto_prinsesa" />
             <div class="r-desc">
@@ -125,5 +125,6 @@ foreach ($tourdata as $i) {
     },
   });
 </script>
+<script src="js/general.js"></script>
 
 </html>
