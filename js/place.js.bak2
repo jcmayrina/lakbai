@@ -17,13 +17,15 @@ function showSlides() {
 
 var getObj = JSON.parse(localStorage.getItem("obj"));
 
+console.log(getObj[0]);
+
 document.getElementById("location").innerHTML = getObj[0]["dest_name"];
 document.getElementById("fact").innerHTML = getObj[0]["dest_desc"];
 document.getElementById("address").innerHTML = getObj[0]["dest_add"];
 document.getElementById("season").innerHTML = getObj[0]["dest_season"];
 document.getElementById("price").innerHTML = getObj[0]["dest_stprice"];
-var str = "/images/lakbai-places/" + getObj[0]["dest_image"];
-document.getElementById("image").src = str;
+var img = (document.getElementById("image").src =
+  "images/lakbai-places/" + getObj[0]["dest_image"]);
 document.getElementById("ifr").src =
   "https://maps.google.com/maps?q=" +
   getObj[0]["dest_lat"] +

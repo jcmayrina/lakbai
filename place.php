@@ -96,41 +96,26 @@ $tourdata = $data->viewTours();
     </div>
   </div>
 
-  <div class="r-con">
+  <div class="r-con-place">
     <div class="r-tit">
-      <h1>Recommended places</h1>
+      <h1>Recommended Places</h1>
     </div>
     <div class="owl-carousel owl-theme">
-      <div class="item">
-        <div class="r-img">
-          <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
+      <?php
+      foreach ($tourdata as $i) :
+      ?>
+        <div class="item" id="<?php echo $i['dest_id']; ?>" onclick="livesearch(this.id)">
+          <div class="r-img">
+            <img src="<?php echo 'images/lakbai-places/' . $i['dest_image']; ?>" alt="puerto_prinsesa" />
+            <div class="r-desc">
+              <h5><?php echo $i['dest_name']; ?></h5>
+              <?php echo $i['dest_desc']; ?>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/puerto_prinsesa.jpg" alt="puerto_prinsesa" />
-        </div>
-      </div>
+      <?php
+      endforeach;
+      ?>
     </div>
   </div>
 
@@ -184,6 +169,8 @@ $tourdata = $data->viewTours();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/8e42a01d1f.js" crossorigin="anonymous"></script>
   <script src="js/place.js"></script>
+  <script src="js/general.js"></script>
+  <script src="js/saveMyVacation.js"></script>
 </body>
 
 </html>

@@ -43,9 +43,7 @@ function resultCity(data) {
     div3.appendChild(text);
 
     const img = document.createElement("img");
-    var str = ".../images/lakbai-places/" + data[i]["dest_image"] + ".jpg"
-    img.src = str;
-    img.alt = data[i]["dest_name"];
+    img.src = "./images/lakbai-places/" + data[i]["dest_image"];
 
     div1.appendChild(img);
     div.appendChild(div1);

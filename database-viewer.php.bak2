@@ -52,12 +52,12 @@ class db
         return $data;
     }
 
-    public function searchRelatedCity($input, $tag)
+    public function searchRelatedCity($city, $tag)
     {
-        $query = "SELECT * FROM destinations WHERE (dest_add LIKE :input OR dest_name LIKE :input) AND dest_tags LIKE :tag";
+        $query = "SELECT * FROM destinations WHERE dest_city LIKE :city AND dest_tags LIKE :tag";
         $stmt = $this->con->prepare($query);
         $stmt->execute(array(
-            'input' => '%' . $input . '%',
+            'city' => '%' . $city . '%',
             'tag' => '%' . $tag . '%'
         ));
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

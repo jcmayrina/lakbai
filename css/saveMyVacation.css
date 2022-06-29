@@ -221,6 +221,7 @@ select::-ms-expand {
 
 .right-container div {
   margin-top: 15px;
+  margin-right: 20px;
 }
 
 .right-container ul {
@@ -290,6 +291,10 @@ datalist {
 .right-container .plan-maincont li .plan-cont .plan-name {
   color: #fff;
   font-size: 30px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .right-container .plan-maincont .plan-desc {
