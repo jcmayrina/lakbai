@@ -206,3 +206,25 @@ iframe {
   -webkit-box-orient: vertical;
   overflow: hidden !important;
 }
+.addReview {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  margin-left: 10px;
+  text-decoration: none;
+}
+.add-new-review,
+.btn-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+}
+.clear-rating {
+  display: none !important;
+}
+.caption {
+  display: none !important;
+}

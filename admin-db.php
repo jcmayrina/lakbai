@@ -38,16 +38,32 @@ class admin
     }
     public function viewReviews()
     {
+        if (isset($_GET['destID'])) {
+            $id = $_GET['destID'];
+            $query = "SELECT *
+            FROM reviews
+            JOIN users 
+            ON reviews.review_userID = users.user_id
+            JOIN destinations 
+            ON reviews.review_destID = destinations.dest_id
+            WHERE destinations.dest_id = $id;";
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+    public function viewReviewsUser()
+    {
         if (isset($_SESSION['userID'])) {
             $id = $_SESSION['userID'];
-            $query = "SELECT
-        destinations.dest_name, destinations.dest_city, destinations.dest_desc, destinations.dest_image, reviews.review_comment, reviews.review_star
-        FROM reviews
-        JOIN users 
-        ON reviews.review_userID = users.user_id
-        JOIN destinations 
-        ON reviews.review_destID = destinations.dest_id
-        WHERE users.user_id = $id;";
+            $query = "SELECT *
+            FROM reviews
+            JOIN users 
+            ON reviews.review_userID = users.user_id
+            JOIN destinations 
+            ON reviews.review_destID = destinations.dest_id
+            WHERE users.user_id = $id;";
             $stmt = $this->con->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -19,9 +19,17 @@ $tourdata = $data->viewTours();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/place.css" />
   <title>Place</title>
+
 </head>
 
 <body>
@@ -52,6 +60,11 @@ $tourdata = $data->viewTours();
         <i class="fa-solid fa-peso-sign"></i>
         <p id="price"></p>
         <p>&nbsp;pesos per person</p>
+        <?php
+        if (isset($_SESSION['userID'])) {
+          echo '<a href="#bottom"><button type="button" class="btn btn-info add-new-review">Add Review</button></a>';
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -77,23 +90,59 @@ $tourdata = $data->viewTours();
     <div class="review-tit">
       <h1>Reviews</h1>
     </div>
+    <table class="table addReview" id="addReview">
+      <thead>
+        <tr>
+          <th colspan="2">Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <form method="POST" action="/include/reg-form-handling.php" enctype="multipart/form-data">
+            <td>
+              <input type="hidden" name="userID" value="<?php echo $_SESSION['userID'] ?>">
+              <input type="hidden" name="destID" value="<?php echo $_GET['destID'] ?>">
+              <input class="form-control" type="text" name="review">
+            </td>
+            <td>
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-info" name="addReview">Add</button>
+              </div>
+            </td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
     <div class="review-carousel owl-theme">
+
       <?php
-      foreach ($reviewdata as $i) {
+      if ($reviewdata != null) {
+        foreach ($reviewdata as $i) :
       ?>
-        <div class="item">
-          <div class="review-img">
-            <h4><i class='bx bxs-quote-alt-left'></i> <?php echo $i["user_fname"]; ?> <i class='bx bxs-quote-alt-right'></i></h4>
-            <div class="r-desc">
-              <?php echo $i["review_star"]; ?><br />
-              <?php echo $i["review_comment"]; ?>
+          <div class="item">
+            <div class="review-img">
+              <h4><i class='bx bxs-quote-alt-left'></i> <?php echo $i["user_fname"]; ?> <i class='bx bxs-quote-alt-right'></i></h4>
+              <div class="r-desc">
+                <?php echo $i["review_star"]; ?><br />
+                <?php echo $i["review_comment"]; ?>
+              </div>
             </div>
           </div>
+        <?php
+        endforeach;
+      } else {
+        ?>
+        <div class="item">
+          <div class="review-img">
+            <h4>No reviews yet...</h4>
+          </div>
         </div>
-      <?php
-      };
-      ?>
     </div>
+
+  <?php
+      }
+  ?>
+  </div>
   </div>
 
   <div class="r-con-place">
@@ -113,11 +162,13 @@ $tourdata = $data->viewTours();
             </div>
           </div>
         </div>
+
       <?php
       endforeach;
       ?>
     </div>
   </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -125,6 +176,8 @@ $tourdata = $data->viewTours();
   <script>
     $(document).ready(function() {
       $(".owl-carousel").owlCarousel();
+
+      $("#ratinginput").rating();
 
     });
 

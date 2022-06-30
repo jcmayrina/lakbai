@@ -35,6 +35,17 @@ if (isset($_POST['updateUser'])) {
     $_SESSION['msg_type'] = "info";
     header("location: ../user-profile.php");
 }
+if (isset($_POST['addReview'])) {
+    $userID = $_POST['userID'];
+    $destID = $_POST['destID'];
+    $review = $_POST['review'];
+
+    $conn->query("INSERT INTO `reviews`(`review_userID`, `review_destID`, `review_comment`, `review_star`) VALUES ('$userID','$destID','$review','⭐⭐⭐⭐⭐');") or die($conn->error);
+
+    $_SESSION['message'] = "Added a review!";
+    $_SESSION['msg_type'] = "info";
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 if (isset($_POST['editTour'])) {
     $destID = $_POST['destID'];
     $destName = $_POST['destName'];

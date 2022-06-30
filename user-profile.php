@@ -3,7 +3,7 @@ session_start();
 require_once('admin-db.php');
 $data = new admin();
 $showcurrUser = $data->showcurrUser();
-$reviewdata = $data->viewReviews();
+$reviewdatauser = $data->viewReviewsUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +32,7 @@ $reviewdata = $data->viewReviews();
 
 <body>
     <?php
+
     if (!isset($_SESSION['userLvl'])) {
 
         include("navbar.php");
@@ -97,7 +98,7 @@ $reviewdata = $data->viewReviews();
             <h1>Visited Places</h1>
             <div class="visited-places">
                 <?php
-                foreach ($reviewdata as $j) :
+                foreach ($reviewdatauser as $j) :
                 ?>
                     <div class="visited-places-info">
                         <img src="<?php echo "images/lakbai-places/" . $j['dest_image']; ?>" alt="<?php echo $j['dest_name']; ?>">

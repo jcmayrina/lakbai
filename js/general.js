@@ -52,7 +52,7 @@ function zoomHere(data) {
 
 //Pass data to place.php to see further details
 function openNewTab(data) {
-  localStorage.setItem("obj", JSON.stringify(data));
+  sessionStorage.setItem("obj", JSON.stringify(data));
 }
 
 function livesearch(id) {
@@ -66,6 +66,6 @@ function livesearch(id) {
 }
 
 function gotoplace(data) {
-  localStorage.setItem("obj", JSON.stringify(data));
+  sessionStorage.setItem("obj", JSON.stringify(data));
   window.open("place.php", "_self");
 }
