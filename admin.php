@@ -23,11 +23,11 @@ if ($_SESSION['userLvl'] != 1) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="./css/admin.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src="/js/admin.js"></script>
+    <script src="./js/admin.js"></script>
 </head>
 
 <body>
@@ -102,7 +102,7 @@ if ($_SESSION['userLvl'] != 1) {
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     <a href="?edittour=<?php echo $i['dest_id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a href="/include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" onclick='javascript:return confirm("Are you sure you want to delete this comment?")' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="./include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" onclick='javascript:return confirm("Are you sure you want to delete this comment?")' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -128,7 +128,7 @@ if ($_SESSION['userLvl'] != 1) {
                     </thead>
                     <tbody>
                         <tr>
-                            <form method="POST" action="/include/reg-form-handling.php" enctype="multipart/form-data">
+                            <form method="POST" action="./include/reg-form-handling.php" enctype="multipart/form-data">
                                 <?php
                                 if (isset($_GET['edittour']))
                                     foreach ($updatedata as $i) {
@@ -180,7 +180,7 @@ if ($_SESSION['userLvl'] != 1) {
                     </thead>
                     <tbody>
                         <tr>
-                            <form method="POST" action="/include/reg-form-handling.php" enctype="multipart/form-data">
+                            <form method="POST" action="./include/reg-form-handling.php" enctype="multipart/form-data">
                                 <td><input class="form-control" type="text" name="destName" id="destName"></td>
                                 <td><input class="form-control" type="text" name="destDesc" id="destDesc"></td>
                                 <td><input class="form-control" type="text" name="destAdd" id="destAdd"></td>
@@ -242,7 +242,7 @@ if ($_SESSION['userLvl'] != 1) {
                                 <td class="pass"><?php echo $i['user_pass']; ?></td>
                                 <td><?php echo $i['user_tags']; ?></td>
                                 <td>
-                                    <a href="/include/reg-form-handling.php?deleteuser=<?php echo $i['user_id'] ?>" onclick='javascript:return confirm("Are you sure you want to delete this comment?")' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="./include/reg-form-handling.php?deleteuser=<?php echo $i['user_id'] ?>" onclick='javascript:return confirm("Are you sure you want to delete this comment?")' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>
