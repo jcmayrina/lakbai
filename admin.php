@@ -4,7 +4,7 @@ require_once('admin-db.php');
 
 $data = new admin();
 $userdata = $data->viewUsers();
-$tourdata = $data->viewTours();
+$tourdata = $data->viewToursGen();
 $reviewdata = $data->viewReviews();
 $updatedata = $data->editTour();
 
@@ -102,7 +102,7 @@ if ($_SESSION['userLvl'] != 1) {
                                 <td>
                                     <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                     <a href="?edittour=<?php echo $i['dest_id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                                    <a href="/include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="/include/reg-form-handling.php?deletetour=<?php echo $i['dest_id'] ?>" onclick='javascript:return confirm("Are you sure you want to delete this comment?")' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -242,7 +242,7 @@ if ($_SESSION['userLvl'] != 1) {
                                 <td class="pass"><?php echo $i['user_pass']; ?></td>
                                 <td><?php echo $i['user_tags']; ?></td>
                                 <td>
-                                    <a href="/include/reg-form-handling.php?deleteuser=<?php echo $i['user_id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                    <a href="/include/reg-form-handling.php?deleteuser=<?php echo $i['user_id'] ?>" onclick='javascript:return confirm("Are you sure you want to delete this comment?")' class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php } ?>

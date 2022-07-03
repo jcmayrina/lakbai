@@ -1,5 +1,20 @@
 <?php
 session_start();
+require_once('admin-db.php');
+
+$data = new admin();
+if (isset($_SESSION['userTag'])) {
+  $extags = explode(",", $_SESSION['userTag']);
+  $imtags = "'" . implode("', '", $extags) . "'";
+  $tourdata = $data->viewTours($imtags);
+} else {
+  $tourdata = $data->viewToursGen();
+}
+$allTour = 0;
+
+foreach ($tourdata as $i) {
+  $allTour++;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +25,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,17 +48,22 @@ session_start();
     }
   }
   ?>
+  <div class="overlay"></div>
   <div class="guide-cont">
-    <div class="guide-cont2">
+    <video autoplay loop muted plays-inline class="backvid">
+      <source src="images/beach.mp4" type="video/mp4">
+    </video>
+    <div class=" guide-cont2">
       <div class="guide">
-        <h1>Looking for a guide?</h1>
+        <h1 id="looking"></h1>
         <form action="" method="get">
           <input type="text" name="guidesearch" id="guidesearch" placeholder="Where's your next Adventure?" />
-          <button type="submit" value="search">Search</button>
         </form>
+        <div id="results"></div>
       </div>
       <div class="numtours">
-        <h3>Total number of destinations:</h3>
+        <h3>Total number of destinations: <p class="num" data-val="<?php echo $allTour; ?>"><?php echo $allTour; ?></p>
+        </h3>
       </div>
     </div>
   </div>
@@ -52,72 +73,21 @@ session_start();
       <h1>Recommended Places</h1>
     </div>
     <div class="owl-carousel owl-theme">
-      <div class="item">
-        <div class="r-img">
-          <img src="images/banner.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
+      <?php
+      foreach ($tourdata as $i) :
+      ?>
+        <div class="item" id="<?php echo $i['dest_id']; ?>" onclick="livesearch(this.id)">
+          <div class="r-img">
+            <img src="<?php echo 'images/lakbai-places/' . $i['dest_image']; ?>" alt="puerto_prinsesa" />
+            <div class="r-desc">
+              <h5><?php echo $i['dest_name']; ?></h5>
+              <?php echo $i['dest_desc']; ?>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/banner1.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/banner2.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/banner3.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/banner4.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <div class="r-img">
-          <img src="images/banner5.jpg" alt="puerto_prinsesa" />
-          <div class="r-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-            cupiditate, dignissimos vero asperiores iure esse hic sit
-            repellendus deserunt aliquam sunt, facere iusto ipsa impedit
-            delectus consequuntur repudiandae quasi eaque!
-          </div>
-        </div>
-      </div>
+      <?php
+      endforeach;
+      ?>
     </div>
   </div>
 </body>
@@ -127,11 +97,47 @@ session_start();
 <script>
   $(document).ready(function() {
     $(".owl-carousel").owlCarousel();
-  });
+    $('#guidesearch').on('input', function() {
+      var name = $(this).val();
+      $('#results').css('display', $(this).val() !== '' ? 'block' : 'none')
+      $.post('index-ajax.php', {
+        name: name
+      }, function(data) {
+        $('div#results').html(data);
+      });
+    });
+    let valueDisplays = document.querySelectorAll(".num");
+    let interval = 1000;
 
+    valueDisplays.forEach((valueDisplay) => {
+      let startValue = 0;
+      let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+      let duration = Math.floor(interval / endValue);
+      let counter = setInterval(function() {
+        startValue += 1;
+        valueDisplay.textContent = startValue;
+        if (startValue == endValue) {
+          clearInterval(counter);
+        }
+      }, duration);
+    });
+    var typed = new Typed('#looking', {
+      strings: ['Looking for a guide?', 'Explore Now!', 'It\'s more fun in the Philippines!'],
+      typeSpeed: 50,
+      backSpeed: 50,
+      backDelay: 5000,
+      repeatDelay: 2000,
+      loop: true,
+    });
+  });
+  window.addEventListener('click', function(e) {
+    if (!document.getElementById('guidesearch').contains(e.target)) {
+      $('#results').css('display', 'none');
+    }
+  });
   $(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
+    loop: false,
+    margin: 5,
     nav: false,
     responsive: {
       0: {
@@ -141,7 +147,7 @@ session_start();
         items: 3,
       },
       1000: {
-        items: 5,
+        items: 4,
       },
       1920: {
         items: 6,
@@ -149,5 +155,6 @@ session_start();
     },
   });
 </script>
+<script src="js/general.js"></script>
 
 </html>

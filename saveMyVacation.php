@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once('saveMyVacation-livesearch.php');
+require_once('database-viewer.php');
 
-$livesearch = new livesearch();
-$data = $livesearch->viewData();
-echo "<script>console.log('" . json_encode($data) . "')</script>";
+$db = new db();
+$data = $db->viewDestinationData();
+
 ?>
 
 <!DOCTYPE html>
@@ -39,14 +39,12 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
       <div class="left-container">
         <section>
           <h2>I am travelling to</h2>
-          <form action="saveMyVacation-livesearch.php" method="POST">
-            <input id="searchBox" name="place" list="place" type="text" required>
-          </form>
+          <input id="searchBox" name="place" list="place" type="text" oninput="searchCity()" required>
           <div class="place-options">
             <datalist id="place">
-              <?php foreach ($data as $i) { ?>
-                <option value="<?php echo (isset($i['dest_city']) ? htmlspecialchars($i['dest_city']) : ''); ?>"><?php echo $i["dest_city"]; ?></option>
-              <?php } ?>
+              <!-- <?php foreach ($data as $i) { ?>
+                <option value="<?php echo (isset($i['dest_city']) ? htmlspecialchars($i['dest_city']) : ''); ?>"></option>
+              <?php } ?> -->
           </div>
         </section>
         <div class="left-container-select-cont">
@@ -78,88 +76,31 @@ echo "<script>console.log('" . json_encode($data) . "')</script>";
             <h3>Type of Holiday I am Looking for </h3>
             <br>
             <div class="left-container-select">
-              <select required>
+              <select id="searchSelect" onchange="searchCity()" required>
                 <option value="" disabled selected>Select your option</option>
                 <option value="culture">Culture & History</option>
                 <option value="nature">Nature & Adventure</option>
                 <option value="art">Art & Museums</option>
-                <option value="private">Private Experiences</option>
-                <option value="locals">Meet the Locals</option>
-                <option value="Nightlife">Culinary & Nightlife</option>
+                <option value="culinary">Culinary & Nightlife</option>
+                <option value="summer">Summer experience</option>
               </select>
             </div>
           </div>
         </div>
-        <div class="btn-submit"> <input type="submit" value="Submit"></div>
   </form>
   </div>
 
   <div class="right-container">
     <div>
       <h1>Vacation Plans:</h1>
-      <ul class="plan-maincont">
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner2.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner3.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
-        <li>
-          <div class="plan-cont" onclick="location.href='place.php'">
-            <div class="plan-img">
-              <img src="/images/banner5.jpg" alt="">
-            </div>
-            <div class="plan-name">Puerto Princesa Underground</div>
-          </div>
-        </li>
+      <ul id="plan-maincontd" class="plan-maincont">
       </ul>
     </div>
   </div>
   </div>
 
-
 </body>
+<script src="js/general.js"></script>
+<script src="js/saveMyVacation.js"></script>
 
 </html>

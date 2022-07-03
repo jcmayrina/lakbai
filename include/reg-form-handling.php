@@ -17,6 +17,35 @@ if (isset($_GET['deleteuser'])) {
     $_SESSION['msg_type'] = "danger";
     header("location: ../admin.php");
 }
+if (isset($_POST['updateUser'])) {
+    $userID = $_POST['userID'];
+    $userFname = $_POST['fname'];
+    $userLname = $_POST['lname'];
+    $userPhone = $_POST['phone'];
+    $userEmail = $_POST['email'];
+    $userPass = $_POST['pass'];
+    $usertags = $_POST['tags'];
+    $temp = '';
+    foreach ($usertags as $value) {
+        $temp .= $value . ",";
+    }
+    $conn->query("UPDATE `users` SET `user_fname`='$userFname',`user_lname`='$userLname',`user_contact`='$userPhone',`user_email`='$userEmail',`user_pass`='$userPass',`user_tags`='$temp' WHERE `user_id`=$userID") or die($conn->error);
+
+    $_SESSION['message'] = "User has been updated!";
+    $_SESSION['msg_type'] = "info";
+    header("location: ../user-profile.php");
+}
+if (isset($_POST['addReview'])) {
+    $userID = $_POST['userID'];
+    $destID = $_POST['destID'];
+    $review = $_POST['review'];
+
+    $conn->query("INSERT INTO `reviews`(`review_userID`, `review_destID`, `review_comment`, `review_star`) VALUES ('$userID','$destID','$review','⭐⭐⭐⭐⭐');") or die($conn->error);
+
+    $_SESSION['message'] = "Added a review!";
+    $_SESSION['msg_type'] = "info";
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
 if (isset($_POST['editTour'])) {
     $destID = $_POST['destID'];
     $destName = $_POST['destName'];

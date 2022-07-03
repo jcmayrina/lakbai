@@ -1,0 +1,183 @@
+/* 
+COLOR
+   --dblue: #051d41;
+   --lblue: #55aaf4;
+
+*/
+
+.main-container {
+  margin: auto;
+  margin-top: 50px;
+  width: 1800px;
+  display: flex;
+}
+
+.left-container {
+  flex-grow: 1;
+  margin-right: 15px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+}
+
+.left-container hr {
+  background-color: #051d41;
+  border: none;
+  height: 1.5px;
+  margin-bottom: 10px;
+}
+
+.left-container a {
+  text-decoration: none;
+}
+.edit-btn {
+  position: relative;
+  top: 0;
+  left: 72%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  width: 132px;
+  height: fit-content;
+  padding: 10px;
+  border-radius: 15px;
+  display: inline-flex;
+}
+
+.edit-btn i {
+  margin-right: 10px;
+}
+
+.edit-btn:hover h4,
+.edit-btn:hover i,
+.edit-btn:hover {
+  background-color: #051d41;
+  color: white;
+}
+
+.left-container form {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.left-container h5 {
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+
+.left-container h3 {
+  margin-left: 120px;
+  margin-bottom: 20px;
+}
+
+.left-container table,
+td {
+  border-collapse: collapse;
+}
+
+.right-container {
+  flex-grow: 1;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  border-radius: 5px;
+}
+
+.right-container img {
+  width: 200px;
+  height: 170px;
+  border-radius: 20px;
+  border: solid 1px black;
+}
+
+.visited-places {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.visited-places-info {
+  display: flex;
+  margin: 10px;
+}
+
+.visited-places-info div {
+  margin-left: 20px;
+}
+
+.visited-places-info h3 {
+  color: #051d44;
+}
+
+.visited-places-info h4 {
+  font-weight: 400;
+}
+
+.visited-places-info section {
+  margin-top: 5px;
+}
+
+.visited-places-info section p {
+  margin-top: 5px;
+  width: 800px;
+}
+.visited-places hr {
+  margin-top: 20px;
+  background-color: #051d41;
+  border: none;
+  height: 1.5px;
+}
+
+form {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+}
+
+form label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  margin-bottom: 0px !important;
+  margin-top: 20px;
+}
+
+form input {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  background-color: rgb(248, 245, 245);
+  border-radius: 6px;
+  outline: none;
+  margin-top: 20px;
+}
+button {
+  margin-top: 20px;
+  border: none;
+  background-color: #051d41;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  grid-column: 1 / span 2;
+}
+
+.lever {
+  color: var(--dblue);
+  margin-top: 20px;
+}
+.bootstrap-select > .dropdown-toggle {
+  margin: 20px 0 0 0;
+}
+.bootstrap-select .dropdown-toggle .filter-option,
+.bootstrap-select > .dropdown-toggle {
+  width: 100%;
+  float: right;
+  min-height: 35px;
+}
+.bootstrap-select > .dropdown-toggle.bs-placeholder,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:hover,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:focus,
+.bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+  color: #051d41;
+  border: 1px solid gray;
+}

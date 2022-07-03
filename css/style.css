@@ -1,7 +1,7 @@
 :root {
   --dblue: #051d41;
   --lblue: #55aaf4;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 * {
@@ -11,6 +11,7 @@
           box-sizing: border-box;
   color: var(--dblue);
   line-height: 1.3;
+  font-family: "Raleway", sans-serif;
 }
 
 html {
@@ -73,7 +74,6 @@ ol {
 }
 
 .navbarmain .logo .ltext {
-  font-family: "Open Sans", sans-serif;
   color: var(--lblue);
   -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
@@ -81,7 +81,6 @@ ol {
 }
 
 .navbarmain .logo .dtext {
-  font-family: "Open Sans", sans-serif;
   color: #fff;
   -webkit-transition: ease-in-out 0.5s;
   transition: ease-in-out 0.5s;
@@ -144,7 +143,6 @@ ol {
 }
 
 .guide-cont {
-  margin-top: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -158,8 +156,6 @@ ol {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
 }
 
 .guide {
@@ -168,21 +164,34 @@ ol {
   width: 40vw;
 }
 
+.guide h1 {
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
+}
+
 .guide form {
-  margin: 10px 0 20px 0;
+  margin: 20px 0 20px 0;
 }
 
 .guide form input[type="text"] {
+  box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.8);
   padding: 10px;
   width: 70%;
-  border: none;
-  border: 2px solid #051d41;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: #fff;
 }
 
 .guide form button[type="submit"] {
+  box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 5px 5px 26px 0px rgba(0, 0, 0, 0.8);
   background-color: #fff;
-  border: none;
-  border: 2px solid #051d41;
+  border-radius: 10px;
+  border: 2px solid #fff;
   padding: 10px 20px 10px 20px;
   color: #051d41;
   text-decoration: none;
@@ -203,12 +212,25 @@ ol {
 
 .numtours {
   text-align: center;
-  border-top: 2px solid #000;
+  border-top: 2px solid #fff;
+}
+
+.numtours p {
+  text-shadow: 4px 3px 12px rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
+  color: #fff;
+  display: inline;
+}
+
+.numtours h3 {
+  text-shadow: 4px 3px 12px rgba(0, 0, 0, 0.6);
+  margin-top: 10px;
+  color: #fff;
+  display: inline;
 }
 
 .guide-cont2 {
   margin: 20px;
-  border: 2px solid #000;
 }
 
 .r-con {
@@ -218,11 +240,12 @@ ol {
 
 .r-con img {
   border-radius: 10px 10px 0 0;
-  min-width: 100%;
+  min-width: 305px;
   height: 200px;
 }
 
 .r-con .item {
+  cursor: pointer;
   margin-top: 20px;
   border-radius: 20px;
 }
@@ -236,22 +259,21 @@ ol {
           justify-content: center;
 }
 
-.owl-carousel .r-desc {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 10px 10px 6px 10px;
-  background-color: #222222;
-  border-radius: 0 0 10px 10px;
+.r-tit h1 {
   color: #fff;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  overflow: hidden;
-  max-height: 3.6em;
-  line-height: 1em;
+  text-shadow: 4px 3px 12px rgba(0, 0, 0, 0.78);
+}
+
+.owl-carousel .r-desc {
+  padding: 10px 10px 2px 10px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  color: #222222;
+  display: -webkit-box;
+  max-width: 305px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden !important;
 }
 
 .about {
@@ -297,6 +319,7 @@ ol {
   background-color: #55aaf4;
   padding: 30px;
   text-align: center;
+  overflow: hidden;
 }
 
 .owl-carousel .owl-item img {
@@ -309,5 +332,79 @@ ol {
 
 .userlink a:hover {
   color: #55aaf4;
+}
+
+.backvid {
+  position: absolute;
+  right: 0;
+  top: 0;
+  min-height: 100vh;
+  z-index: -3;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#results {
+  z-index: 5;
+  position: absolute;
+  display: none;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 540px;
+}
+
+#pic {
+  vertical-align: middle;
+  height: 40px;
+  width: 70px;
+}
+
+.user {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 10px 10px 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.user:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.user span {
+  margin-left: 10px;
+}
+
+.user:hover > span {
+  color: #fff;
+}
+
+#looking {
+  display: inline;
+}
+
+.typed-cursor {
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
+  display: inline;
 }
 /*# sourceMappingURL=style.css.map */

@@ -44,6 +44,7 @@ table.table {
 
 table.table tr th,
 table.table tr td {
+  overflow-wrap: break-word;
   border-color: #e9e9e9;
 }
 

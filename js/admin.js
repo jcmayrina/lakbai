@@ -7,11 +7,6 @@ $(document).ready(function () {
     document.getElementById("addTourTable").style.display = "block";
     return false;
   });
-  // Delete row on delete button click
-  $(document).on("click", ".delete", function () {
-    $(this).parents("tr").remove();
-    $(".add-new").removeAttr("disabled");
-  });
 });
 
 // show tours
