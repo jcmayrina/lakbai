@@ -3,7 +3,13 @@ session_start();
 require_once('admin-db.php');
 
 $data = new admin();
-$tourdata = $data->viewTours();
+if (isset($_SESSION['userTag'])) {
+  $extags = explode(",", $_SESSION['userTag']);
+  $imtags = "'" . implode("', '", $extags) . "'";
+  $tourdata = $data->viewTours($imtags);
+} else {
+  $tourdata = $data->viewToursGen();
+}
 $allTour = 0;
 
 foreach ($tourdata as $i) {

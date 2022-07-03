@@ -3,16 +3,8 @@ session_start();
 require_once('admin-db.php');
 
 $data = new admin();
-$reviewdata = $data->viewReviews();
-if (isset($_SESSION['userTag'])) {
-  $extags = explode(",", $_SESSION['userTag']);
-  $imtags = "'" . implode("', '", $extags) . "'";
-  $tourdata = $data->viewToursPlace($imtags);
-} else {
-  $tourdata = $data->viewToursGenPlace();
-}
-
-echo "<script>console.log(" . json_encode($tourdata) . ")</script>";
+$reviewdata = $data->viewReviews();;
+$tourdata = $data->viewTours();
 ?>
 <!DOCTYPE html>
 <html lang="en">

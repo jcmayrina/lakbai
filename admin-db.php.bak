@@ -28,45 +28,13 @@ class admin
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    public function viewTours($tag)
-    {
-        $query = "SELECT * FROM destinations WHERE dest_tags IN ($tag)";
-        $stmt = $this->con->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
-    public function viewToursGen()
+    public function viewTours()
     {
         $query = "SELECT * FROM `destinations`;";
         $stmt = $this->con->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
-    }
-    public function viewToursPlace($tag)
-    {
-        if (isset($_GET['destID'])) {
-            $id = $_GET['destID'];
-            $query = "SELECT * FROM destinations WHERE dest_id != $id AND dest_tags IN ($tag)";
-            $stmt = $this->con->prepare($query);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        }
-    }
-
-    public function viewToursGenPlace()
-    {
-        if (isset($_GET['destID'])) {
-            $id = $_GET['destID'];
-            $query = "SELECT * FROM `destinations` WHERE dest_id != $id;";
-            $stmt = $this->con->prepare($query);
-            $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        }
     }
     public function viewReviews()
     {
