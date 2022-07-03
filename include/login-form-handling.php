@@ -37,11 +37,11 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['userLvl'] = $row['user_lvl'];
 
                     if ($_SESSION['userLvl'] == 2) {
-                        header("location: ./index.php");
+                        header("location: ../index.php");
                         $_SESSION['userTag'] = $row['user_tags'];
                     }
                     if ($_SESSION['userLvl'] == 1)
-                        header("location: ./admin.php");
+                        header("location: ../admin.php");
                     exit();
                 } else {
                     $pError = "Wrong password";
