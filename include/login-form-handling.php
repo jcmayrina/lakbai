@@ -34,11 +34,12 @@ if (isset($_POST['login-submit'])) {
                     session_start();
                     $_SESSION['userName'] = $row['user_fname'];
                     $_SESSION['userID'] = $row['user_id'];
-                    $_SESSION['userTag'] = $row['user_tags'];
                     $_SESSION['userLvl'] = $row['user_lvl'];
 
-                    if ($_SESSION['userLvl'] == 2)
+                    if ($_SESSION['userLvl'] == 2) {
                         header("location: ../index.php");
+                        $_SESSION['userTag'] = $row['user_tags'];
+                    }
                     if ($_SESSION['userLvl'] == 1)
                         header("location: ../admin.php");
                     exit();
