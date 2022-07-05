@@ -4,8 +4,8 @@ require_once('admin-db.php');
 
 $data = new admin();
 if (isset($_SESSION['userTag'])) {
-  $extags = explode(",", $_SESSION['userTag']);
-  $imtags = "'" . implode("', '", $extags) . "'";
+  $extags = explode(", ", $_SESSION['userTag']);
+  $imtags = "'" . implode("','", $extags) . "'";
   $tourdata = $data->viewTours($imtags);
 } else {
   $tourdata = $data->viewToursGen();

@@ -6,7 +6,7 @@ $data = new admin();
 $reviewdata = $data->viewReviews();
 if (isset($_SESSION['userTag'])) {
   $extags = explode(",", $_SESSION['userTag']);
-  $imtags = "'" . implode("', '", $extags) . "'";
+  $imtags = "'" . implode("','", $extags) . "'";
   $tourdata = $data->viewToursPlace($imtags);
 } else {
   $tourdata = $data->viewToursGenPlace();
