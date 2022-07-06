@@ -8,17 +8,17 @@ if (isset($_POST['login-submit'])) {
 
     if (empty($email)) {
         $emailErr = "Email is required";
-        header("location.../login.php?erroremail");
+        header("location:../login.php?erroremail");
         exit();
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailErr = "Invalid email format";
-        header("location.../login.php?erroremail");
+        header("location:../login.php?erroremail");
         exit();
     } else {
         $sql =  "SELECT * FROM users WHERE user_email = ?;";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("location.../login.php?errordb");
+            header("location:../login.php?errordb");
             exit();
         } else {
             mysqli_stmt_bind_param($stmt, "s", $email);
@@ -28,7 +28,7 @@ if (isset($_POST['login-submit'])) {
                 $pTemp = strcmp($password, $row['user_pass']);
                 if ($pTemp != 0) {
                     $pError = "Wrong password";
-                    header("location.../login.php?passwordemail");
+                    header("location: ../login.php?passwordemail");
                     exit();
                 } else if ($pTemp == 0) {
                     session_start();
@@ -45,16 +45,16 @@ if (isset($_POST['login-submit'])) {
                     exit();
                 } else {
                     $pError = "Wrong password";
-                    header("location.../login.php?passwordemail");
+                    header("location: ../login.php?passwordemail");
                     exit();
                 }
             } else {
-                header("location.../login.php?noUser");
+                header("location: ../login.php?noUser");
                 exit();
             }
         }
     }
 } else {
-    header("location.../login.php");
+    header("location:../login.php");
     exit();
 }
